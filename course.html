@@ -45,7 +45,7 @@
         #pageLoader{display:none !important;}
 
         /* NAVBAR */
-        .navbar{position:fixed;top:0;left:0;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
+        .navbar{position:relative;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
         .nav-wrap{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
         .logo{text-decoration:none;display:flex;align-items:center;gap:.6rem;}
         .logo-text{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#ffffff;line-height:1.15;}
@@ -58,8 +58,7 @@
         .nav-links a.active{color:var(--gold);}
         .nav-links a.active::after{width:100%;}
         .mob-btn{display:none;background:none;border:none;cursor:pointer;color:#ffffff;}
-        .nav-btn-join{background:transparent;color:#ffffff;padding:.5rem 1.2rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem;transition:all .3s;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:.35rem;margin-right:.5rem;}
-        .nav-btn-join:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(255,184,0,.1);}
+        
         .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:901;opacity:0;pointer-events:none;transition:opacity .3s;}
         .mob-overlay.on{opacity:1;pointer-events:all;}
         .mob-menu{position:fixed;top:0;right:-100%;width:78%;max-width:340px;height:100vh;background:#fff;z-index:902;padding:5rem 2rem 2rem;box-shadow:-10px 0 40px rgba(0,0,0,.15);transition:right .35s cubic-bezier(.4,0,.2,1);}
@@ -182,7 +181,6 @@
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <div class="nav-right">
-            <a href="https://chat.whatsapp.com/DHsSv4faUAU9IzSBRJWKiy" target="_blank" class="nav-btn-join">Join Now</a>
             <button class="mob-btn" onclick="toggleMenu()"><i data-lucide="menu" style="width:24px;height:24px;"></i></button>
         </div>
     </div>
@@ -393,7 +391,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2025 APK INFOTECH IT SOLUTIONS All rights reserved.</p>
+        <p>© 2025 APK INFOTECH IT SOLUTIONS PVT LTD All rights reserved.</p>
     </div>
 </footer>
 
