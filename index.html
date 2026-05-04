@@ -268,6 +268,9 @@
         .map-box{border-radius:22px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);position:relative;}
         .map-box iframe{width:100%;height:380px;border:none;display:block;}
         .map-cta-overlay{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);}
+        .map-under{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.25rem;padding:1.1rem 1.25rem;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--card-shadow);}
+        .map-under .addr{color:var(--text-mid);font-size:.95rem;line-height:1.5;}
+        .map-under .addr strong{display:block;color:var(--navy);font-size:1rem;margin-bottom:.1rem;}
 
         /* CONTACT */
         .contact-section{background:linear-gradient(180deg,rgba(15,14,46,.04) 0%,var(--bg) 100%);}
@@ -368,22 +371,39 @@
             .name-marquee-item{padding:0 1.4rem;}
             .hero-slide{min-height:unset;padding:2.25rem 0;}
 
+            /* Nav search (mobile friendly) */
+            .nav-search-inner{flex-wrap:wrap;gap:.65rem;}
+            .nav-search-inner input{width:100%;}
+            .nav-search-close{margin-left:auto;}
+            .nav-search-tags{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:.25rem;}
+            .nav-search-tags::-webkit-scrollbar{height:6px;}
+            .nav-search-results{max-height:52vh;overflow:auto;}
+
             /* Courses cards (fix cut-off on mobile) */
-            .courses-track-wrapper{height:440px;padding:1rem;}
-            .courses-slider-area{min-height:460px;}
-            .course-card{width:100%;max-width:360px;margin:0 auto;}
+            .courses-track-wrapper{height:auto;padding:1rem;}
+            .courses-slider-area{min-height:unset;}
+            .courses-track{display:flex;gap:1rem;overflow-x:auto;padding:.25rem 0 .75rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+            .courses-track::-webkit-scrollbar{height:8px;}
+            .courses-track .course-card{position:relative !important;opacity:1 !important;transform:none !important;width:82vw;max-width:360px;margin:0;scroll-snap-align:center;}
             .course-img-area{height:180px;}
             .course-body h3{font-size:1rem;}
             .course-body p{font-size:.86rem;}
 
             /* Launch cards */
-            .launch-stage{height:480px;}
-            .lc-card{width:min(360px,92vw);}
+            .launch-stage{height:auto;overflow:visible;perspective:none;}
+            .launch-stage-inner{height:auto;display:flex;gap:1rem;overflow-x:auto;padding:.25rem 0 1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;transform:none !important;}
+            .launch-stage-inner::-webkit-scrollbar{height:8px;}
+            .lc-card{position:relative;top:auto;left:auto;transform:none !important;opacity:1 !important;filter:none !important;flex:0 0 86%;max-width:360px;scroll-snap-align:center;}
+            .launch-nav{display:none;}
 
             /* Contact cards */
             .contact-form-box{padding:1.5rem;}
+            .contact-grid{gap:2rem;}
+            .form-group input,.form-group select,.form-group textarea{font-size:1rem;}
             .info-card:hover{transform:none;}
             .map-box iframe{height:320px;}
+            .map-under{flex-direction:column;align-items:stretch;}
+            .map-under .btn{width:100%;justify-content:center;}
         }
 
         @media(max-width:480px){
@@ -397,14 +417,15 @@
             .marquee-row{gap:1.1rem;}
             .mq-tag{font-size:.76rem;padding:.3rem .7rem;}
             .courses-fixed-card{padding:1.5rem;}
-            .courses-track-wrapper{height:470px;}
-            .course-card{max-width:100%;}
+            .courses-track .course-card{width:88vw;max-width:100%;}
 
-            /* Launch 3D spacing (smaller screens) */
-            .lc-card.state-left1{transform:translateX(calc(-50% - 220px)) translateY(-50%) scale(.82) rotateY(12deg);}
-            .lc-card.state-right1{transform:translateX(calc(-50% + 220px)) translateY(-50%) scale(.82) rotateY(-12deg);}
-            .lc-card.state-left2{transform:translateX(calc(-50% - 380px)) translateY(-50%) scale(.65) rotateY(18deg);}
-            .lc-card.state-right2{transform:translateX(calc(-50% + 380px)) translateY(-50%) scale(.65) rotateY(-18deg);}
+            /* Launch */
+            .lc-card{flex-basis:92%;}
+
+            /* Map */
+            .map-box iframe{height:260px;}
+            .map-under{padding:1rem;}
+            .map-under .addr{font-size:.92rem;}
         }
     </style>
 <base target="_blank">
@@ -720,6 +741,15 @@
                     <i data-lucide="map-pin" style="width:17px;height:17px;"></i> Get Directions
                 </a>
             </div>
+        </div>
+        <div class="map-under reveal">
+            <div class="addr">
+                <strong>Address</strong>
+                65, 5th Street, Ram Nagar, Manivakkam, Chennai, Tamil Nadu - 600048
+            </div>
+            <a href="https://maps.google.com/?q=65,+5th+Street,+Ram+Nagar,+Manivakkam,+Chennai,+Tamil+Nadu+600048" target="_blank" class="btn btn-primary">
+                Get Directions <i data-lucide="arrow-right" style="width:17px;height:17px;"></i>
+            </a>
         </div>
     </div>
 </section>
