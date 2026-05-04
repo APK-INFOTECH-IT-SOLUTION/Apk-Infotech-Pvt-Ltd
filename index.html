@@ -48,7 +48,7 @@
         #pageLoader{display:none !important;}
 
         /* NAVBAR */
-        .navbar{position:sticky;top:0;left:0;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
+        .navbar{position:relative;top:auto;left:auto;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
         .navbar.scrolled{background:rgba(240,242,255,.96);backdrop-filter:blur(24px);box-shadow:0 2px 28px rgba(11,12,42,.13);border-bottom:1px solid rgba(255,184,0,.12);padding:.7rem 0;}
         .nav-wrap{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
 
@@ -85,7 +85,7 @@
         /* HERO - fills full viewport after sticky navbar */
         .hero{position:relative;overflow:hidden;}
         .swiper-hero{width:100%;}
-        .hero-slide{height:calc(100vh - 74px);min-height:480px;display:flex;align-items:center;padding-top:0;position:relative;overflow:hidden;background:linear-gradient(160deg,#f5f6ff 0%,#e8ebff 55%,#fff8e0 100%);}
+        .hero-slide{height:100vh;min-height:480px;display:flex;align-items:center;padding-top:0;position:relative;overflow:hidden;background:linear-gradient(160deg,#f5f6ff 0%,#e8ebff 55%,#fff8e0 100%);}
 
 
         .hero-mesh{position:absolute;inset:0;opacity:.5;background:radial-gradient(ellipse at 75% 15%,rgba(255,184,0,.22) 0%,transparent 55%),radial-gradient(ellipse at 15% 85%,rgba(30,32,120,.14) 0%,transparent 55%),radial-gradient(ellipse at 50% 50%,rgba(255,200,50,.08) 0%,transparent 70%);}
@@ -160,6 +160,7 @@
         .mq-tag.svc{background:rgba(15,14,46,.07);color:var(--navy);border-color:rgba(15,14,46,.1);}
         @keyframes mq-fwd{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
         @keyframes mq-rev{0%{transform:translateX(-50%);}100%{transform:translateX(0);}}
+        @keyframes courseIn{to{opacity:1;transform:translateY(0);}}
 
         /* COURSES LAYOUT */
         .courses-layout{display:grid;grid-template-columns:360px 1fr;gap:2rem;align-items:stretch;}
@@ -267,7 +268,7 @@
         .map-section{padding-bottom:0;}
         .map-box{border-radius:22px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);position:relative;}
         .map-box iframe{width:100%;height:380px;border:none;display:block;}
-        .map-cta-overlay{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);}
+        .map-cta-overlay{display:none;}
         .map-under{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.25rem;padding:1.1rem 1.25rem;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--card-shadow);}
         .map-under .addr{color:var(--text-mid);font-size:.95rem;line-height:1.5;}
         .map-under .addr strong{display:block;color:var(--navy);font-size:1rem;margin-bottom:.1rem;}
@@ -379,12 +380,19 @@
             .nav-search-tags::-webkit-scrollbar{height:6px;}
             .nav-search-results{max-height:52vh;overflow:auto;}
 
-            /* Courses cards (fix cut-off on mobile) */
+            /* Courses cards (move-in, vertical list on mobile) */
             .courses-track-wrapper{height:auto;padding:1rem;}
             .courses-slider-area{min-height:unset;}
-            .courses-track{display:flex;gap:1rem;overflow-x:auto;padding:.25rem 0 .75rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
-            .courses-track::-webkit-scrollbar{height:8px;}
-            .courses-track .course-card{position:relative !important;opacity:1 !important;transform:none !important;width:82vw;max-width:360px;margin:0;scroll-snap-align:center;}
+            .courses-track{display:grid;grid-template-columns:1fr;gap:1rem;}
+            .course-card{width:100%;max-width:520px;margin:0 auto;opacity:0;transform:translateY(18px);animation:courseIn .55s ease forwards;}
+            .course-card:nth-child(1){animation-delay:.05s;}
+            .course-card:nth-child(2){animation-delay:.12s;}
+            .course-card:nth-child(3){animation-delay:.19s;}
+            .course-card:nth-child(4){animation-delay:.26s;}
+            .course-card:nth-child(5){animation-delay:.33s;}
+            .course-card:nth-child(6){animation-delay:.40s;}
+            .course-card:nth-child(7){animation-delay:.47s;}
+            .course-card:nth-child(8){animation-delay:.54s;}
             .course-img-area{height:180px;}
             .course-body h3{font-size:1rem;}
             .course-body p{font-size:.86rem;}
@@ -394,7 +402,9 @@
             .launch-stage-inner{height:auto;display:flex;gap:1rem;overflow-x:auto;padding:.25rem 0 1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;transform:none !important;}
             .launch-stage-inner::-webkit-scrollbar{height:8px;}
             .lc-card{position:relative;top:auto;left:auto;transform:none !important;opacity:1 !important;filter:none !important;flex:0 0 86%;max-width:360px;scroll-snap-align:center;}
-            .launch-nav{display:none;}
+            .launch-nav{display:flex;gap:.85rem;margin-top:1rem;}
+            .l-nav-btn{width:44px;height:44px;}
+            .launch-dots{display:none;}
 
             /* Contact cards */
             .contact-form-box{padding:1.5rem;}
@@ -404,6 +414,8 @@
             .map-box iframe{height:320px;}
             .map-under{flex-direction:column;align-items:stretch;}
             .map-under .btn{width:100%;justify-content:center;}
+            .accredited-img{max-width:520px;border-radius:12px;}
+            .submit-btn{padding:.85rem;font-size:.98rem;}
         }
 
         @media(max-width:480px){
@@ -417,15 +429,18 @@
             .marquee-row{gap:1.1rem;}
             .mq-tag{font-size:.76rem;padding:.3rem .7rem;}
             .courses-fixed-card{padding:1.5rem;}
-            .courses-track .course-card{width:88vw;max-width:100%;}
+            .course-img-area{height:170px;}
 
             /* Launch */
             .lc-card{flex-basis:92%;}
+            .l-nav-btn{width:42px;height:42px;}
 
             /* Map */
             .map-box iframe{height:260px;}
             .map-under{padding:1rem;}
             .map-under .addr{font-size:.92rem;}
+            .accredited-img{max-width:360px;border-radius:10px;}
+            .submit-btn{padding:.82rem;font-size:.96rem;}
         }
     </style>
 <base target="_blank">
@@ -736,11 +751,6 @@
         </div>
         <div class="map-box reveal">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.5!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA3N8KwMzAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <div class="map-cta-overlay">
-                <a href="https://maps.google.com/?q=APK+Infotech+Bangalore" target="_blank" class="btn btn-primary">
-                    <i data-lucide="map-pin" style="width:17px;height:17px;"></i> Get Directions
-                </a>
-            </div>
         </div>
         <div class="map-under reveal">
             <div class="addr">
@@ -934,73 +944,91 @@ function buildMqRow(items, cls) {
 document.getElementById('mqCourses').innerHTML = buildMqRow(courseData.map(c=>c.name), '');
 document.getElementById('mqServices').innerHTML = buildMqRow(serviceNames, 'svc');
 
-// ─── COURSES - 3 cards together, stop 0.7s, exit 0.2s, next 3 ───
+// ─── COURSES ───
 const track = document.getElementById('coursesTrack');
-const STOP_MS = 700;
-const EXIT_MS = 200;
-const ENTER_MS = 200;
-const BATCH = 3;
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-const loopData = [...courseData, ...courseData, ...courseData, ...courseData];
-track.innerHTML = loopData.map((c, i) => `
-    <div class="course-card" style="position:absolute;top:0;opacity:0;transform:translateX(120%);">
-        <div class="course-img-area"><img src="${c.img}" alt="${c.name}" loading="lazy"><div class="course-img-overlay"></div></div>
-        <div class="course-body" style="padding:1.1rem;">
-            <span class="course-tag">${c.tag}</span>
-            <h3 style="font-size:1rem;margin:.45rem 0 .3rem;">${c.name}</h3>
-            <p style="font-size:.85rem;color:var(--text-mid);">${c.desc}</p>
+if (isMobile) {
+    // Mobile: show a clean list (CSS handles move-in animation)
+    track.innerHTML = courseData.map((c) => `
+        <div class="course-card">
+            <div class="course-img-area"><img src="${c.img}" alt="${c.name}" loading="lazy"><div class="course-img-overlay"></div></div>
+            <div class="course-body" style="padding:1.1rem;">
+                <span class="course-tag">${c.tag}</span>
+                <h3 style="font-size:1rem;margin:.45rem 0 .3rem;">${c.name}</h3>
+                <p style="font-size:.85rem;color:var(--text-mid);">${c.desc}</p>
+            </div>
         </div>
-    </div>
-`).join('');
+    `).join('');
+} else {
+    // Desktop: 3 cards together, stop 0.7s, exit 0.2s, next 3
+    const STOP_MS = 700;
+    const EXIT_MS = 200;
+    const ENTER_MS = 200;
+    const BATCH = 3;
 
-const allCourseCards = Array.from(track.children);
-const total = allCourseCards.length;
-let batchIdx = 0;
+    const loopData = [...courseData, ...courseData, ...courseData, ...courseData];
+    track.innerHTML = loopData.map((c) => `
+        <div class="course-card" style="position:absolute;top:0;opacity:0;transform:translateX(120%);">
+            <div class="course-img-area"><img src="${c.img}" alt="${c.name}" loading="lazy"><div class="course-img-overlay"></div></div>
+            <div class="course-body" style="padding:1.1rem;">
+                <span class="course-tag">${c.tag}</span>
+                <h3 style="font-size:1rem;margin:.45rem 0 .3rem;">${c.name}</h3>
+                <p style="font-size:.85rem;color:var(--text-mid);">${c.desc}</p>
+            </div>
+        </div>
+    `).join('');
 
-function positionCards() {
-    const wrapW = track.parentElement.offsetWidth - 48; // subtract padding
-    const cardW = Math.floor((wrapW - 24) / 3); // 3 cards with 12px gaps
-    allCourseCards.forEach((card, i) => {
-        const col = i % BATCH;
-        card.style.width = cardW + 'px';
-        card.style.left = (col * (cardW + 12)) + 'px';
-    });
-    return cardW;
-}
+    const allCourseCards = Array.from(track.children);
+    const total = allCourseCards.length;
+    let batchIdx = 0;
 
-function runBatch() {
-    const cardW = positionCards();
-    const startIdx = (batchIdx * BATCH) % total;
-    const cards = [];
-    for (let i = 0; i < BATCH; i++) cards.push(allCourseCards[(startIdx + i) % total]);
-
-    // ENTER: slide in from right together
-    cards.forEach(card => {
-        card.style.transition = `opacity ${ENTER_MS}ms ease, transform ${ENTER_MS}ms cubic-bezier(.25,.46,.45,.94)`;
-        card.style.opacity = '1';
-        card.style.transform = 'translateX(0)';
-    });
-
-    // After ENTER + STOP: slide out to left
-    setTimeout(() => {
-        cards.forEach(card => {
-            card.style.transition = `opacity ${EXIT_MS}ms ease, transform ${EXIT_MS}ms cubic-bezier(.55,0,1,.45)`;
-            card.style.opacity = '0';
-            card.style.transform = 'translateX(-120%)';
+    function positionCards() {
+        const wrapW = track.parentElement.offsetWidth - 48; // subtract padding
+        const cardW = Math.floor((wrapW - 24) / 3); // 3 cards with 12px gaps
+        allCourseCards.forEach((card, i) => {
+            const col = i % BATCH;
+            card.style.width = cardW + 'px';
+            card.style.left = (col * (cardW + 12)) + 'px';
         });
-        setTimeout(() => {
-            // Reset off-screen right, advance
-            cards.forEach(card => {
-                card.style.transition = 'none';
-                card.style.transform = 'translateX(120%)';
-            });
-            batchIdx++;
-            runBatch();
-        }, EXIT_MS + 20);
-    }, ENTER_MS + STOP_MS);
-}
+        return cardW;
+    }
 
-setTimeout(() => { positionCards(); runBatch(); }, 300);
+    function runBatch() {
+        positionCards();
+        const startIdx = (batchIdx * BATCH) % total;
+        const cards = [];
+        for (let i = 0; i < BATCH; i++) cards.push(allCourseCards[(startIdx + i) % total]);
+
+        // ENTER: slide in from right together
+        cards.forEach(card => {
+            card.style.transition = `opacity ${ENTER_MS}ms ease, transform ${ENTER_MS}ms cubic-bezier(.25,.46,.45,.94)`;
+            card.style.opacity = '1';
+            card.style.transform = 'translateX(0)';
+        });
+
+        // After ENTER + STOP: slide out to left
+        setTimeout(() => {
+            cards.forEach(card => {
+                card.style.transition = `opacity ${EXIT_MS}ms ease, transform ${EXIT_MS}ms cubic-bezier(.55,0,1,.45)`;
+                card.style.opacity = '0';
+                card.style.transform = 'translateX(-120%)';
+            });
+            setTimeout(() => {
+                // Reset off-screen right, advance
+                cards.forEach(card => {
+                    card.style.transition = 'none';
+                    card.style.transform = 'translateX(120%)';
+                });
+                batchIdx++;
+                runBatch();
+            }, EXIT_MS + 20);
+        }, ENTER_MS + STOP_MS);
+    }
+
+    setTimeout(() => { positionCards(); runBatch(); }, 300);
+    window.addEventListener('resize', () => positionCards());
+}
 
 // ─── NEW LAUNCHES DATA ───
 const launchData = [
