@@ -41,11 +41,8 @@
         ::-webkit-scrollbar-track{background:var(--bg);}
         ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
 
-        /* LOADER */
-        #pageLoader{position:fixed;inset:0;background:var(--navy-deep);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s;}
-        #pageLoader.gone{opacity:0;visibility:hidden;}
-        .loader-ring{width:52px;height:52px;border:3px solid rgba(201,168,76,.2);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;}
-        @keyframes spin{to{transform:rotate(360deg);}}
+        /* LOADER (disabled) */
+        #pageLoader{display:none !important;}
 
         /* NAVBAR */
         .navbar{position:fixed;top:0;left:0;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
@@ -150,8 +147,6 @@
 <base target="_blank">
 </head>
 <body>
-
-<div id="pageLoader"><div class="loader-ring"></div></div>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
@@ -376,7 +371,6 @@
                 <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 80561 75066</p>
                 <p><i data-lucide="mail" style="width:16px;height:16px;"></i> forpkqueries@gmail.com</p>
                 <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Bangalore, Karnataka, India</p>
-                <p><i data-lucide="clock" style="width:16px;height:16px;"></i> Mon – Sat: 9:00 AM – 6:00 PM</p>
             </div>
         </div>
     </div>
@@ -388,13 +382,6 @@
 <script>
     // Initialize Lucide icons
     lucide.createIcons();
-
-    // Loader
-    window.addEventListener('load',function(){
-        setTimeout(function(){
-            document.getElementById('pageLoader').classList.add('gone');
-        },500);
-    });
 
     // Mobile menu
     function toggleMenu(){
