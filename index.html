@@ -44,19 +44,8 @@
         ::-webkit-scrollbar-track{background:var(--bg);}
         ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
 
-        /* LOADER */
-        #pageLoader{position:fixed;inset:0;background:var(--navy-deep);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .7s cubic-bezier(.4,0,.2,1),visibility .7s;}
-        #pageLoader.gone{opacity:0;visibility:hidden;pointer-events:none;}
-        .loader-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:.75rem;animation:loaderFadeUp .6s ease both;}
-        .loader-brand{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.04em;}
-        .loader-brand span{background:var(--grad-gold2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-        .loader-tagline{font-size:.78rem;color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;}
-        .loader-bar-wrap{width:200px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;}
-        .loader-bar{height:100%;width:0%;background:var(--grad-gold2);border-radius:2px;animation:loaderProgress 1.4s cubic-bezier(.4,0,.2,1) forwards;}
-        .loader-ring{width:44px;height:44px;border:2.5px solid rgba(201,168,76,.15);border-top-color:var(--gold);border-radius:50%;animation:spin .9s linear infinite;}
-        @keyframes spin{to{transform:rotate(360deg);}}
-        @keyframes loaderProgress{0%{width:0%;}60%{width:70%;}85%{width:88%;}100%{width:100%;}}
-        @keyframes loaderFadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+        /* LOADER (disabled) */
+        #pageLoader{display:none !important;}
 
         /* NAVBAR */
         .navbar{position:sticky;top:0;left:0;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
@@ -64,10 +53,10 @@
         .nav-wrap{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
 
         /* LOGO */
-        .logo{text-decoration:none;display:flex;align-items:center;gap:.5rem;}
+        .logo{text-decoration:none;display:flex;align-items:center;gap:.6rem;}
         .logo-img{height:52px;width:auto;object-fit:contain;border-radius:6px;}
-        .logo-text{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#ffffff;line-height:1.15;display:none;}
-        .logo-text span{display:block;font-size:.65rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
+        .logo-text{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#ffffff;line-height:1.15;}
+        .logo-text span{display:block;font-size:.7rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
         .navbar.scrolled .logo-text{color:var(--navy);}
 
         .nav-links{display:flex;gap:2.25rem;list-style:none;}
@@ -125,7 +114,7 @@
         .swiper-pagination{bottom:28px !important;}
 
         /* MOVING NAME BANNER - between navbar and slider */
-        .name-marquee-wrap{overflow:hidden;background:var(--grad-gold2);padding:.38rem 0;position:relative;z-index:10;flex-shrink:0;}
+        .name-marquee-wrap{overflow:hidden;background:var(--grad-gold2);padding:.32rem 0;position:relative;z-index:20;flex-shrink:0;margin-top:-22px;box-shadow:0 10px 26px rgba(11,12,42,.18);}
         .name-marquee-track{display:flex;width:max-content;animation:nameTicker 22s linear infinite;}
         .name-marquee-item{display:inline-flex;align-items:center;gap:1.2rem;padding:0 2.5rem;white-space:nowrap;}
         .name-marquee-item .nm-text{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:800;color:#0B0C2A;letter-spacing:.1em;text-transform:uppercase;line-height:1;}
@@ -269,6 +258,7 @@
 
         /* ACCREDITED */
         .accredited-section{background:#fff;text-align:center;}
+        .accredited-img{max-width:min(860px,100%);height:auto;display:block;margin:0 auto;border-radius:14px;box-shadow:0 10px 30px rgba(11,12,42,.12);border:1px solid rgba(201,168,76,.25);background:#fff;}
         .msme-badge{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;background:var(--grad);color:#fff;width:200px;height:110px;border-radius:18px;font-family:'Syne',sans-serif;gap:.25rem;border:2px solid rgba(201,168,76,.3);}
         .msme-badge .msme-title{font-size:1.5rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
         .msme-badge .msme-sub{font-size:.62rem;opacity:.75;line-height:1.5;text-align:center;}
@@ -377,15 +367,6 @@
 </head>
 <body>
 
-<div id="pageLoader">
-    <div class="loader-logo-wrap">
-        <div class="loader-ring"></div>
-        <div class="loader-brand">APK <span>Infotech</span></div>
-        <div class="loader-tagline">Career Growth Starts Here</div>
-    </div>
-    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-</div>
-
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <div class="nav-wrap">
@@ -396,7 +377,7 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#courses">Courses</a></li>
+            <li><a href="course.html" target="_self">Courses</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -404,7 +385,7 @@
             <button class="nav-search-btn" id="navSearchBtn" aria-label="Search courses">
                 <i data-lucide="search" style="width:19px;height:19px;"></i>
             </button>
-            <a href="#" class="nav-btn-register">Register</a>
+            <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="nav-btn-register">Register</a>
             <a href="#" class="nav-btn-join">Join Now</a>
             <button class="mob-btn" id="mobBtn" aria-label="Open menu">
                 <i data-lucide="menu" style="width:26px;height:26px;"></i>
@@ -437,7 +418,7 @@
     <ul class="mob-links">
         <li><a href="#home" class="mlink">Home</a></li>
         <li><a href="#services" class="mlink">Services</a></li>
-        <li><a href="#courses" class="mlink">Courses</a></li>
+        <li><a href="course.html" target="_self" class="mlink">Courses</a></li>
         <li><a href="#about" class="mlink">About</a></li>
         <li><a href="#contact" class="mlink">Contact</a></li>
     </ul>
@@ -458,7 +439,7 @@
                             <h1>Client <span>Services</span> That Deliver</h1>
                             <p>Connecting top talent with industry-leading companies. Comprehensive staffing solutions tailored to your business needs.</p>
                             <div class="hero-btns">
-                                <a href="https://forms.google.com" target="_blank" class="btn btn-primary">
+                                <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="btn btn-primary">
                                     <i data-lucide="user-plus" style="width:17px;height:17px;"></i> Register Now
                                 </a>
                                 <a href="https://wa.me/918056175066" target="_blank" class="btn btn-ghost">
@@ -490,7 +471,7 @@
                             <h1>Internship <span>Offers</span> Await</h1>
                             <p>Gain real-world experience with our curated internship programs. Work on live projects and build your professional portfolio.</p>
                             <div class="hero-btns">
-                                <a href="https://forms.google.com" target="_blank" class="btn btn-primary">
+                                <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="btn btn-primary">
                                     <i data-lucide="user-plus" style="width:17px;height:17px;"></i> Register Now
                                 </a>
                                 <a href="https://wa.me/918056175066" target="_blank" class="btn btn-ghost">
@@ -518,7 +499,7 @@
                             <h1>Courses & <span>Placement Training</span></h1>
                             <p>Master in-demand skills with our industry-aligned courses. From Full Stack to VLSI — we prepare you for the career you deserve.</p>
                             <div class="hero-btns">
-                                <a href="https://forms.google.com" target="_blank" class="btn btn-primary">
+                                <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="btn btn-primary">
                                     <i data-lucide="user-plus" style="width:17px;height:17px;"></i> Register Now
                                 </a>
                                 <a href="https://wa.me/918056175066" target="_blank" class="btn btn-ghost">
@@ -625,7 +606,7 @@
                 <div class="cfc-label">Explore All Programs</div>
                 <h3>Our Courses</h3>
                 <p>From Full Stack to AI Agents, VLSI to Cyber Security — curated, industry-aligned programs with real-world projects and guaranteed placement support.</p>
-                <a href="#" class="cfc-btn"><i data-lucide="arrow-right" style="width:16px;height:16px;"></i> View All Courses</a>
+                <a href="course.html" target="_self" class="cfc-btn"><i data-lucide="arrow-right" style="width:16px;height:16px;"></i> View All Courses</a>
             </div>
             <div class="courses-slider-area">
                 <div class="courses-track-wrapper">
@@ -634,7 +615,7 @@
             </div>
         </div>
         <div class="view-all-btn-wrap reveal">
-            <a href="#" class="btn-outline-navy">
+            <a href="course.html" target="_self" class="btn-outline-navy">
                 <i data-lucide="grid" style="width:17px;height:17px;"></i> View All Courses
             </a>
         </div>
@@ -673,10 +654,7 @@
             <div class="sec-divider"></div>
         </div>
         <div class="reveal">
-            <div class="msme-badge">
-                <div class="msme-title">MSME</div>
-                <div class="msme-sub">Ministry of Micro, Small<br>&amp; Medium Enterprises</div>
-            </div>
+            <img src="img.png" alt="Ministry of MSME, Govt. of India" class="accredited-img" loading="lazy">
         </div>
     </div>
 </section>
@@ -755,10 +733,6 @@
                     <div><h4>Email</h4><p>forpkqueries@gmail.com</p></div>
                 </div>
                 <div class="info-card">
-                    <div class="info-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-                    <div><h4>Working Hours</h4><p>Mon – Sat: 9:00 AM – 6:00 PM</p></div>
-                </div>
-                <div class="info-card">
                     <div class="info-icon"><i data-lucide="map-pin" style="width:20px;height:20px;"></i></div>
                     <div><h4>Location</h4><p>Bangalore, Karnataka, India</p></div>
                 </div>
@@ -788,7 +762,7 @@
                 <ul class="f-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="course.html" target="_self">Courses</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -798,7 +772,7 @@
                 <ul class="f-links">
                     <li><a href="#services">Client Services</a></li>
                     <li><a href="#services">Internships</a></li>
-                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="course.html" target="_self">Courses</a></li>
                     <li><a href="#services">Placement Support</a></li>
                 </ul>
             </div>
@@ -818,13 +792,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 lucide.createIcons();
-
-// ─── LOADER smooth exit ───
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('pageLoader').classList.add('gone');
-    }, 1400);
-});
 
 // ─── NAME MARQUEE ───
 const nameItems = [
@@ -856,11 +823,11 @@ document.querySelectorAll('.mlink').forEach(l => l.addEventListener('click', clo
 // Hero Swiper
 const heroSwiper = new Swiper('.swiper-hero', {
     loop: true,
-    autoplay: { delay: 5000, disableOnInteraction: false },
+    autoplay: { delay: 2500, disableOnInteraction: false },
     pagination: { el: '.swiper-pagination', clickable: true },
     effect: 'fade',
     fadeEffect: { crossFade: true },
-    speed: 900
+    speed: 600
 });
 
 // Ticker
@@ -1037,7 +1004,7 @@ launchStageInner.innerHTML = launchData.map((l, i) => `
                     <div class="lc-footer-info">⏱ <span>${l.duration}</span></div>
                     <div class="lc-footer-info" style="margin-top:.15rem;">📍 <span>${l.mode}</span></div>
                 </div>
-                <a href="#" class="lc-register-btn">
+                <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="lc-register-btn">
                     Register <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
                 </a>
             </div>
