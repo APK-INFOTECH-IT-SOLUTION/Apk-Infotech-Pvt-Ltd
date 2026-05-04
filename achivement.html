@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | APK INFOTECH IT SOLUTIONS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --navy: #0B0C2A;
+            --gold: #FFB800;
+            --gold-light: #FFD250;
+            --bg: #F0F2FF;
+            --text: #0B0C2A;
+            --text-light: #6B6CA0;
+            --border: rgba(11,12,42,0.09);
+            --card-shadow: 0 4px 24px rgba(11,12,42,0.08);
+            --card-shadow-hover: 0 16px 48px rgba(11,12,42,0.17);
+            --grad-gold: linear-gradient(135deg, #FFB800 0%, #FFE066 50%, #FFB800 100%);
+            --grad-gold2: linear-gradient(135deg, #E6A000 0%, #FFD250 100%);
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+        h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;font-weight:700;}
+
+        ::-webkit-scrollbar{width:6px;}
+        ::-webkit-scrollbar-track{background:var(--bg);}
+        ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+        /* ── NAVBAR ── */
+        .navbar{position:fixed;top:0;left:0;width:100%;z-index:9999;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
+        .nav-wrap{max-width:1300px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+        .logo{text-decoration:none;display:flex;align-items:center;gap:.6rem;}
+        .logo img{height:42px;width:auto;object-fit:contain;}
+        .logo-text{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff;line-height:1.15;}
+        .logo-text span{display:block;font-size:.65rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
+        .nav-links{display:flex;gap:2rem;list-style:none;}
+        .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);font-weight:500;font-size:.9rem;position:relative;transition:color .3s;}
+        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);border-radius:2px;transition:width .3s;}
+        .nav-links a:hover{color:var(--gold-light);}
+        .nav-links a:hover::after{width:100%;}
+        .nav-links a.active{color:var(--gold);}
+        .nav-links a.active::after{width:100%;}
+        .mob-btn{display:none;background:none;border:none;cursor:pointer;color:#fff;}
+
+        .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:901;opacity:0;pointer-events:none;transition:opacity .3s;}
+        .mob-overlay.on{opacity:1;pointer-events:all;}
+        .mob-menu{position:fixed;top:0;right:-100%;width:78%;max-width:340px;height:100vh;background:#fff;z-index:902;padding:5rem 2rem 2rem;box-shadow:-10px 0 40px rgba(0,0,0,.15);transition:right .35s cubic-bezier(.4,0,.2,1);}
+        .mob-menu.on{right:0;}
+        .mob-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;color:var(--text);}
+        .mob-links{list-style:none;display:flex;flex-direction:column;gap:1.25rem;}
+        .mob-links a{text-decoration:none;color:var(--text);font-size:1.1rem;font-weight:600;display:block;padding:.5rem 0;border-bottom:1px solid var(--border);}
+        .mob-links a.active{color:var(--gold);}
+
+        /* ── TITLE SECTION (TOP FIXED) ── */
+        .title-section {
+            background: linear-gradient(135deg, #1a1c5c 0%, #2E2F6A 50%, #1F2270 100%);
+            padding: 100px 1.5rem 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 100;
+        }
+        .title-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,184,0,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,184,0,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .title span {
+            background: var(--grad-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .sec-divider {
+            width: 60px;
+            height: 4px;
+            background: var(--grad-gold);
+            border-radius: 2px;
+            margin: 0.8rem auto 0;
+            position: relative;
+            z-index: 1;
+        }
+        .title-sub {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin-top: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── DESKTOP: STICKY SCROLL WRAPPER ── */
+        .scroll-wrapper {
+            position: relative;
+        }
+
+        /* ── STAGE (STICKY) ── */
+        .stage {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        /* OVERLAY ORDER */
+        .bg1 .stage { z-index: 1; }
+        .bg2 .stage { z-index: 2; }
+        .bg3 .stage { z-index: 3; }
+
+        /* ── SECTIONS ── */
+        .ach-section {
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1rem;
+            overflow: hidden;
+        }
+        .s1 { z-index: 10; background: #F0F2FF; }
+        .s2 { z-index: 20; background: #e8eaff; box-shadow: 0 -8px 40px rgba(11,12,42,0.13); }
+        .s3 { z-index: 30; background: #dde0ff; box-shadow: 0 -8px 40px rgba(11,12,42,0.18); }
+        .s2::before, .s3::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+        }
+
+        /* ── HERO IMAGE ── */
+        .hero-img-wrap {
+            width: min(90vw, 600px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(11,12,42,0.22);
+            border: 3px solid rgba(255,184,0,.3);
+        }
+        .hero-img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ── SECTION HEADER ── */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-top: 60px;
+        }
+        .section-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            color: var(--navy);
+            margin-bottom: .4rem;
+        }
+        .section-header h2 span {
+            background: var(--grad-gold2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── ACHIEVEMENT GRID ── */
+        .ach-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .ach-card {
+            background: #ffffff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+            transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s;
+            position: relative;
+        }
+        .ach-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--grad-gold2);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .35s;
+        }
+        .ach-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+        .ach-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ach-card-img-wrap {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e8eaff 0%, #d0d4ff 100%);
+        }
+        .ach-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s ease;
+        }
+        .ach-card:hover .ach-card-img {
+            transform: scale(1.05);
+        }
+
+        .ach-card-body {
+            padding: 1.2rem 1rem;
+            text-align: center;
+        }
+        .ach-card-body h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .ach-badge {
+            display: inline-block;
+            margin-top: 0.5rem;
+            background: var(--grad-gold2);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: 'Syne', sans-serif;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: linear-gradient(160deg, #080920 0%, #0d1035 50%, #080920 100%);
+            color: #fff;
+            padding: 3rem 0 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 40;
+        }
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem 2.5rem;
+        }
+        .f-brand p {
+            color: rgba(255,255,255,.55);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            margin-bottom: 1.35rem;
+            margin-top: 0.75rem;
+        }
+        .f-col h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: #fff;
+            letter-spacing: 0.03em;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+        .f-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 24px; height: 2px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        .f-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .f-links a {
+            color: rgba(255,255,255,.55);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all .3s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .f-links a::before {
+            content: '›';
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity .2s, transform .2s;
+            transform: translateX(-4px);
+        }
+        .f-links a:hover {
+            color: var(--gold-light);
+            padding-left: 4px;
+        }
+        .f-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .f-contact p {
+            color: rgba(255,255,255,.55);
+            font-size: 0.88rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .f-contact p i {
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .socials {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .social-a {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,.7);
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .social-a:hover {
+            background: var(--gold);
+            color: #0B0C2A;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(255,184,0,.3);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.06);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: rgba(255,255,255,.3);
+            font-size: 0.82rem;
+            background: rgba(0,0,0,.2);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width: 1024px) {
+            .ach-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+            .ach-card-img-wrap { height: 180px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ════════════════════════════════════════════
+           MOBILE STYLES - FIXED OVERLAY SCROLL
+           ════════════════════════════════════════════ */
+        @media(max-width: 768px) {
+            .nav-links { display: none; }
+            .mob-btn { display: block; }
+
+            /* Remove sticky behavior on mobile */
+            .wrapper { height: auto; }
+            .stage { 
+                position: relative; 
+                height: auto; 
+                min-height: auto; 
+                padding: 1.5rem 1rem; 
+            }
+            .ach-section { 
+                height: auto; 
+                min-height: 100vh; 
+                position: relative; 
+                padding: 0; 
+                display: block;
+            }
+            .s2, .s3 { box-shadow: none; }
+
+            /* MOBILE: Section overlay with gold line at top */
+            .ach-section.s2,
+            .ach-section.s3 {
+                position: relative;
+            }
+            .ach-section.s2::before,
+            .ach-section.s3::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+                z-index: 2;
+            }
+
+            /* Section header sticky at top inside each section */
+            .section-header {
+                position: sticky;
+                top: 60px; /* navbar height */
+                background: inherit;
+                z-index: 10;
+                padding: 1rem 0;
+                margin-bottom: 1rem;
+                backdrop-filter: blur(10px);
+            }
+            .s1 .section-header { background: rgba(240, 242, 255, 0.95); }
+            .s2 .section-header { background: rgba(232, 234, 255, 0.95); }
+            .s3 .section-header { background: rgba(221, 224, 255, 0.95); }
+
+            /* MOBILE: 1 CARD PER ROW */
+            .ach-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem 2rem;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .ach-card-img-wrap { height: 240px; }
+            .ach-card-body { padding: 1.2rem; }
+            .ach-card-body h4 { font-size: 1.1rem; }
+            .ach-badge { font-size: 0.75rem; padding: 0.25rem 1rem; }
+
+            .hero-img-wrap { 
+                width: 95vw; 
+                max-width: 500px; 
+                border-radius: 16px; 
+                margin: 0 auto;
+            }
+            .section-header { padding-top: 10px; margin-bottom: 1.5rem; }
+            .section-header h2 { font-size: 1.5rem; }
+
+            .title { font-size: 1.8rem; }
+            .title-section { padding: 90px 1rem 35px; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; padding: 0 1.5rem 2rem; }
+        }
+
+        @media(max-width: 480px) {
+            .ach-grid { gap: 1.2rem; padding: 0 0.75rem 2rem; }
+            .ach-card-img-wrap { height: 220px; }
+            .ach-card-body { padding: 1rem; }
+            .ach-card-body h4 { font-size: 1rem; }
+
+            .logo img { height: 36px; }
+            .logo-text { font-size: 0.85rem; }
+            .logo-text span { font-size: 0.55rem; }
+
+            .title { font-size: 1.5rem; }
+            .title-sub { font-size: 0.8rem; }
+            .section-header h2 { font-size: 1.3rem; }
+        }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-wrap">
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="APK INFOTECH">
+            <div class="logo-text">APK INFOTECH<span>IT SOLUTIONS PVT LTD</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="course.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="achivement.html" class="active">Achievements</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <button class="mob-btn" onclick="toggleMenu()"><i data-lucide="menu" style="width:24px;height:24px;"></i></button>
+        </div>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mobOverlay" onclick="toggleMenu()"></div>
+<div class="mob-menu" id="mobMenu">
+    <button class="mob-close" onclick="toggleMenu()"><i data-lucide="x" style="width:24px;height:24px;"></i></button>
+    <ul class="mob-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="course.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="achivement.html" class="active">Achievements</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</div>
+
+<!-- ══ TITLE SECTION (TOP) ══ -->
+<div class="title-section">
+    <div class="title">Our <span>Achievements</span></div>
+    <div class="sec-divider"></div>
+    <div class="title-sub">Celebrating milestones and certificates</div>
+</div>
+
+<!-- ══ STICKY SCROLL SECTIONS ══ -->
+<div class="scroll-wrapper">
+
+    <!-- SECTION 1 – Hero Image -->
+    <section class="ach-section s1">
+        <div class="stage">
+            <div class="hero-img-wrap">
+                <img src="achivement1.png" alt="Team Achievement">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 – 4 cards -->
+    <section class="ach-section s2">
+        <div class="stage">
+            <div class="section-header">
+                <h2>Certificate <span>Distribution</span></h2>
+                <div class="sec-divider"></div>
+            </div>
+            <div class="ach-grid">
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement2.png" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement3.png" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement4.png" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement5.png" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 – 4 cards -->
+    <section class="ach-section s3">
+        <div class="stage">
+            <div class="section-header">
+                <h2>Certificate <span>Distribution</span></h2>
+                <div class="sec-divider"></div>
+            </div>
+            <div class="ach-grid">
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement6.png" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement7.png" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement8.jpeg" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+                <div class="ach-card">
+                    <div class="ach-card-img-wrap">
+                        <img src="achivement9.png" alt="Achievement" class="ach-card-img">
+                    </div>
+                    <div class="ach-card-body">
+                        <h4>Achievements</h4>
+                        <span class="ach-badge">APK INFOTECH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div><!-- end scroll-wrapper -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="f-brand">
+            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+                <img src="logo.jpg" alt="APK INFOTECH" style="height:40px;width:auto;object-fit:contain;">
+                <span style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;">APK INFOTECH</span>
+            </div>
+            <p>Empowering careers and businesses through innovative placement solutions, cutting-edge courses, and professional services.</p>
+            <div class="socials">
+                <a href="#" class="social-a" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                <a href="#" class="social-a" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
+                <a href="https://wa.me/918939410255" target="_blank" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+            </div>
+        </div>
+        <div class="f-col">
+            <h4>Quick Links</h4>
+            <ul class="f-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="achivement.html">Achievements</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="f-col">
+            <h4>Our Courses</h4>
+            <ul class="f-links">
+                <li><a href="course.html">Full Stack Web Development</a></li>
+                <li><a href="course.html">Agentic AI with Gen AI</a></li>
+                <li><a href="course.html">VLSI Design</a></li>
+                <li><a href="course.html">Cyber Security</a></li>
+                <li><a href="course.html">Robotics and PCB Design</a></li>
+                <li><a href="course.html">Placement Readiness</a></li>
+                <li><a href="course.html">GET Training</a></li>
+            </ul>
+        </div>
+        <div class="f-col f-contact">
+            <h4>Contact Info</h4>
+            <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p>
+            <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98848 75551</p>
+            <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 63812 72033</p>
+            <p><i data-lucide="mail" style="width:16px;height:16px;"></i> official@apkinfotech.in</p>
+            <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="mail" style="width:14px;height:14px;"></i> hr@apkinfotech.in</p>
+            <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> No 65, 5th street, Ram Nagar, Mannivakkam, Chennai - 600 048</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 APK INFOTECH IT SOLUTIONS PVT LTD All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+
+    function toggleMenu(){
+        document.getElementById('mobMenu').classList.toggle('on');
+        document.getElementById('mobOverlay').classList.toggle('on');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | APK INFOTECH IT SOLUTIONS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --navy: #0B0C2A;
+            --gold: #FFB800;
+            --gold-light: #FFD250;
+            --bg: #F0F2FF;
+            --text: #0B0C2A;
+            --text-light: #6B6CA0;
+            --border: rgba(11,12,42,0.09);
+            --card-shadow: 0 4px 20px rgba(11,12,42,0.10);
+            --card-shadow-hover: 0 12px 36px rgba(11,12,42,0.16);
+            --grad-gold2: linear-gradient(135deg, #E6A000 0%, #FFD250 100%);
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+        h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;font-weight:700;}
+        ::-webkit-scrollbar{width:6px;}
+        ::-webkit-scrollbar-track{background:var(--bg);}
+        ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+        /* ══ NAVBAR ══ */
+        .navbar{position:sticky;top:0;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg,#0B0C2A 0%,#1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
+        .nav-wrap{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+        .logo{text-decoration:none;display:flex;align-items:center;gap:.75rem;}
+        .logo-text{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;line-height:1.15;}
+        .logo-text span{display:block;font-size:.7rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
+        .nav-links{display:flex;gap:2.25rem;list-style:none;}
+        .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem;position:relative;transition:color .3s;}
+        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);border-radius:2px;transition:width .3s;}
+        .nav-links a:hover{color:var(--gold-light);}
+        .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+        .nav-links a.active{color:var(--gold);}
+        .mob-btn{display:none;background:none;border:none;cursor:pointer;color:#fff;}
+        .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:901;opacity:0;pointer-events:none;transition:opacity .3s;}
+        .mob-overlay.on{opacity:1;pointer-events:all;}
+        .mob-menu{position:fixed;top:0;right:-100%;width:78%;max-width:340px;height:100vh;background:#fff;z-index:902;padding:5rem 2rem 2rem;box-shadow:-10px 0 40px rgba(0,0,0,.15);transition:right .35s cubic-bezier(.4,0,.2,1);}
+        .mob-menu.on{right:0;}
+        .mob-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;color:var(--text);}
+        .mob-links{list-style:none;display:flex;flex-direction:column;gap:1.25rem;}
+        .mob-links a{text-decoration:none;color:var(--text);font-size:1.1rem;font-weight:600;display:block;padding:.5rem 0;border-bottom:1px solid var(--border);}
+        .mob-links a.active{color:var(--gold);}
+
+        /* ══ SCROLL WRAPPER — STICKY OVERLAY ══ */
+        .scroll-wrapper{ position:relative; }
+
+        /* ══ SECTIONS — STICKY OVERLAY EFFECT ══ */
+        .team-section{
+            height:100vh;
+            position:sticky;
+            top:0;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            padding:2rem 2.5rem;
+            overflow:hidden;
+            will-change:transform;
+        }
+        .s1{ z-index:10; background:#F0F2FF; }
+        .s2{
+            z-index:20;
+            background:#e8eaff;
+            box-shadow:0 -16px 60px rgba(11,12,42,.22),0 -4px 20px rgba(11,12,42,.12);
+            border-radius:28px 28px 0 0;
+        }
+        .s2::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:4px;
+            background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);
+            border-radius:inherit;
+        }
+
+        /* Decorative floating orbs */
+        .s1::after{
+            content:'';
+            position:absolute;
+            width:380px;height:380px;border-radius:50%;
+            background:radial-gradient(circle,rgba(255,184,0,.06) 0%,transparent 70%);
+            bottom:-100px;right:-100px;pointer-events:none;
+            animation:floatOrb 8s ease-in-out infinite;
+        }
+        .s2::after{
+            content:'';
+            position:absolute;
+            width:340px;height:340px;border-radius:50%;
+            background:radial-gradient(circle,rgba(255,184,0,.07) 0%,transparent 70%);
+            top:-80px;left:-80px;pointer-events:none;
+            animation:floatOrb 9s ease-in-out infinite reverse;
+        }
+        @keyframes floatOrb{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-20px);}
+        }
+
+        /* ══ SECTION HEADER ══ */
+        .section-header{text-align:center;margin-bottom:1.5rem;}
+        .section-header h2{
+            font-size:clamp(1.5rem,3vw,2.2rem);
+            color:var(--navy);
+        }
+        .section-header h2 span{
+            background:var(--grad-gold2);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+        }
+        .section-header p{ font-size:.9rem;color:var(--text-light);margin-top:.3rem; }
+        .sec-divider{width:50px;height:4px;background:var(--grad-gold2);border-radius:2px;margin:.5rem auto 0;}
+
+        /* ══ TEAM GRID ══ */
+        .team-grid{display:grid;gap:1.5rem;width:100%;}
+        .cols-2{grid-template-columns:repeat(2,1fr);max-width:640px;}
+        .cols-1{grid-template-columns:1fr;max-width:320px;}
+
+        /* ══ TEAM CARD ══ */
+        .team-card{
+            background:#fff;border-radius:18px;overflow:hidden;
+            box-shadow:var(--card-shadow);border:1px solid var(--border);
+            transition:transform .3s ease, box-shadow .3s ease;
+            position:relative;
+        }
+        .team-card::before{
+            content:'';position:absolute;top:0;left:0;width:100%;height:3px;
+            background:var(--grad-gold2);transform:scaleX(0);transform-origin:left;
+            transition:transform .3s ease;z-index:2;
+        }
+        .team-card:hover{ transform:translateY(-5px); box-shadow:var(--card-shadow-hover); }
+        .team-card:hover::before{ transform:scaleX(1); }
+
+        .team-card-img-wrap{ position:relative;overflow:hidden; }
+        .team-card-img{
+            width:100%;height:220px;
+            object-fit:cover;object-position:top center;display:block;
+            transition:transform .4s ease;
+        }
+        .team-card-img.tall{ height:240px; }
+        .team-card:hover .team-card-img{ transform:scale(1.03); }
+        .team-card-img-wrap::after{
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(180deg,transparent 55%,rgba(11,12,42,.45));
+            pointer-events:none;
+        }
+
+        .team-card-body{ padding:1rem 1.1rem 1.1rem;text-align:center; }
+        .team-card-body h3{
+            font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;
+            color:var(--navy);margin-bottom:.2rem;
+        }
+        .team-card-body p{ font-size:.8rem;color:var(--text-light);margin-bottom:.5rem;line-height:1.4; }
+        .team-badge{
+            display:inline-block;background:var(--grad-gold2);color:#fff;
+            font-size:.65rem;font-weight:700;font-family:'Syne',sans-serif;
+            padding:.18rem .7rem;border-radius:20px;letter-spacing:.04em;
+        }
+
+        /* ══ FOOTER ══ */
+        .footer{background:linear-gradient(160deg,#080920 0%,#0d1035 50%,#080920 100%);color:#fff;padding:3rem 0 0;position:relative;overflow:hidden;}
+        .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2.5rem;padding-bottom:2.5rem;}
+        .f-brand p{color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.75;margin-bottom:1.35rem;margin-top:.75rem;}
+        .f-col h4{font-size:.95rem;font-weight:700;margin-bottom:1.25rem;color:#fff;letter-spacing:.03em;position:relative;padding-bottom:.6rem;}
+        .f-col h4::after{content:'';position:absolute;bottom:0;left:0;width:24px;height:2px;background:var(--gold);border-radius:2px;}
+        .f-links{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+        .f-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.88rem;transition:all .3s;display:flex;align-items:center;gap:.4rem;}
+        .f-links a::before{content:'›';color:var(--gold);opacity:0;transition:opacity .2s,transform .2s;transform:translateX(-4px);}
+        .f-links a:hover{color:var(--gold-light);padding-left:4px;}
+        .f-links a:hover::before{opacity:1;transform:translateX(0);}
+        .f-contact p{color:rgba(255,255,255,.55);font-size:.88rem;margin-bottom:.75rem;display:flex;align-items:center;gap:.65rem;}
+        .f-contact p i{color:var(--gold);flex-shrink:0;}
+        .socials{display:flex;gap:.75rem;}
+        .social-a{width:40px;height:40px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);text-decoration:none;transition:all .3s;}
+        .social-a:hover{background:var(--gold);color:#0B0C2A;border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 18px rgba(255,184,0,.3);}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;text-align:center;color:rgba(255,255,255,.3);font-size:.82rem;background:rgba(0,0,0,.2);}
+        .container{max-width:1300px;margin:0 auto;padding:0 2rem;}
+
+        /* ══ LAPTOP (769px - 1024px) ══ */
+        @media(min-width:769px) and (max-width:1024px){
+            .cols-2{ max-width:560px; gap:1.2rem; }
+            .cols-1{ max-width:300px; }
+            .team-card-img{ height:200px; }
+            .team-card-img.tall{ height:220px; }
+        }
+
+        /* ══ DESKTOP (1025px - 1440px) ══ */
+        @media(min-width:1025px) and (max-width:1440px){
+            .team-section{ padding:2rem 3rem; }
+            .cols-2{ max-width:680px; gap:1.5rem; }
+            .cols-1{ max-width:340px; }
+            .team-card-img{ height:240px; }
+            .team-card-img.tall{ height:260px; }
+            .team-card-body{ padding:1.1rem 1.2rem 1.2rem; }
+            .team-card-body h3{ font-size:1.05rem; }
+            .team-card-body p{ font-size:.82rem; }
+            .section-header h2{ font-size:2rem; }
+            .section-header p{ font-size:.95rem; }
+        }
+
+        /* ══ BIG SCREENS (>1440px) ══ */
+        @media(min-width:1441px){
+            .team-section{ padding:2rem 3.5rem; }
+            .cols-2{ max-width:720px; gap:1.8rem; }
+            .cols-1{ max-width:360px; }
+            .team-card-img{ height:260px; }
+            .team-card-img.tall{ height:280px; }
+            .team-card-body{ padding:1.1rem 1.3rem 1.3rem; }
+            .team-card-body h3{ font-size:1.1rem; }
+            .team-card-body p{ font-size:.85rem; }
+            .section-header h2{ font-size:2.2rem; }
+        }
+
+        /* ══ MOBILE (<=768px) — STICKY OVERLAY with ONE CARD PER ROW ══ */
+        @media(max-width:768px){
+            .nav-links{display:none;}
+            .mob-btn{display:block;}
+            .container,.nav-wrap{padding:0 1.1rem;}
+            .footer-grid{grid-template-columns:1fr;gap:2rem;}
+
+            /* Sticky overlay - IMPORTANT: Keep height:100vh for sticky to work */
+            .team-section{
+                height:100vh;
+                position:sticky;
+                top:0;
+                padding:1.5rem 1rem;
+                justify-content:center;
+            }
+            .s1{ z-index:10; }
+            .s2{
+                z-index:20;
+                border-radius:20px 20px 0 0;
+            }
+            .s2::before{ border-radius:20px 20px 0 0; }
+
+            /* FORCE single column — one card per row */
+            .cols-2, .cols-1{
+                grid-template-columns:1fr !important;
+                max-width:100% !important;
+                width:100% !important;
+                gap:1rem;
+            }
+
+            .team-card{ border-radius:16px; }
+            .team-card-img{ height:200px; }
+            .team-card-img.tall{ height:220px; }
+            .team-card-body{ padding:1rem 1.1rem 1.1rem; }
+            .team-card-body h3{ font-size:1rem; }
+            .team-card-body p{ font-size:.82rem; }
+            .section-header{ margin-bottom:1.2rem; }
+            .section-header h2{ font-size:1.5rem; }
+            .section-header p{ font-size:.85rem; }
+            .sec-divider{ width:45px; }
+            .s1::after,.s2::after{ width:180px;height:180px; }
+        }
+
+        /* ══ SMALL PHONE (<=480px) ══ */
+        @media(max-width:480px){
+            .team-section{ padding:1.2rem .8rem; }
+            .s2{ border-radius:16px 16px 0 0; }
+            .s2::before{ border-radius:16px 16px 0 0; }
+            .team-card{ border-radius:14px; }
+            .team-card-img{ height:180px; }
+            .team-card-img.tall{ height:200px; }
+            .team-card-body{ padding:.9rem 1rem 1rem; }
+            .team-card-body h3{ font-size:.95rem; }
+            .team-card-body p{ font-size:.78rem; }
+            .section-header h2{ font-size:1.3rem; }
+            .section-header{ margin-bottom:1rem; }
+            .team-badge{ font-size:.62rem; padding:.15rem .6rem; }
+        }
+
+        /* ══ TINY PHONE (<=360px) ══ */
+        @media(max-width:360px){
+            .team-card-img{ height:160px; }
+            .team-card-img.tall{ height:180px; }
+            .team-card-body h3{ font-size:.88rem; }
+            .team-card-body p{ font-size:.74rem; }
+        }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-wrap">
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="APK INFOTECH" style="height:48px;width:auto;object-fit:contain;">
+            <div class="logo-text">APK INFOTECH<span>IT SOLUTIONS PVT LTD</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="course.html">Courses</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="achivement.html">Achievements</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <button class="mob-btn" onclick="toggleMenu()">
+                <i data-lucide="menu" style="width:24px;height:24px;"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="mob-overlay" id="mobOverlay" onclick="toggleMenu()"></div>
+<div class="mob-menu" id="mobMenu">
+    <button class="mob-close" onclick="toggleMenu()"><i data-lucide="x" style="width:24px;height:24px;"></i></button>
+    <ul class="mob-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="course.html">Courses</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="achivement.html">Achievements</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</div>
+
+<!-- ══ STICKY OVERLAY SCROLL ══ -->
+<div class="scroll-wrapper">
+
+    <!-- SECTION 1: CTO + COO -->
+    <section class="team-section s1" id="sec1">
+        <div class="section-header" id="hdr1">
+            <h2>Meet Our <span>Leadership</span></h2>
+            <p>The visionaries driving APK INFOTECH forward</p>
+            <div class="sec-divider"></div>
+        </div>
+        <div class="team-grid cols-2">
+            <div class="team-card" id="card-cto">
+                <div class="team-card-img-wrap">
+                    <img src="CTO.png" alt="CTO" class="team-card-img">
+                </div>
+                <div class="team-card-body">
+                    <h3>Chief Technology Officer</h3>
+                    <p>Driving innovation and technical excellence across every product</p>
+                    <span class="team-badge">CTO</span>
+                </div>
+            </div>
+            <div class="team-card" id="card-coo">
+                <div class="team-card-img-wrap">
+                    <img src="COO.png" alt="COO" class="team-card-img">
+                </div>
+                <div class="team-card-body">
+                    <h3>Chief Operating Officer</h3>
+                    <p>Streamlining operations for peak performance and growth</p>
+                    <span class="team-badge">COO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: CMO -->
+    <section class="team-section s2" id="sec2">
+        <div class="section-header" id="hdr2">
+            <h2>Our <span>Marketing Head</span></h2>
+            <p>Building our brand presence and community</p>
+            <div class="sec-divider"></div>
+        </div>
+        <div class="team-grid cols-1">
+            <div class="team-card" id="card-cmo">
+                <div class="team-card-img-wrap">
+                    <img src="CMO.png" alt="CMO" class="team-card-img tall">
+                </div>
+                <div class="team-card-body">
+                    <h3>Chief Marketing Officer</h3>
+                    <p>Building brand presence and crafting growth strategies that connect</p>
+                    <span class="team-badge">CMO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="f-brand">
+                <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+                    <img src="logo.jpg" alt="APK INFOTECH" style="height:40px;width:auto;object-fit:contain;">
+                    <span style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;">APK INFOTECH</span>
+                </div>
+                <p>Empowering careers and businesses through innovative placement solutions, cutting-edge courses, and professional services.</p>
+                <div class="socials">
+                    <a href="#" class="social-a" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                    <a href="#" class="social-a" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
+                    <a href="https://wa.me/918939410255" target="_blank" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                </div>
+            </div>
+            <div class="f-col">
+                <h4>Quick Links</h4>
+                <ul class="f-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="course.html">Courses</a></li>
+                    <li><a href="index.html#about" class="active">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Our Courses</h4>
+                <ul class="f-links">
+                    <li><a href="#">Full Stack Web Development</a></li>
+                    <li><a href="#">Agentic AI with Gen AI</a></li>
+                    <li><a href="#">VLSI Design</a></li>
+                    <li><a href="#">Cyber Security</a></li>
+                    <li><a href="#">Robotics and PCB Design</a></li>
+                    <li><a href="#">Placement Readiness</a></li>
+                    <li><a href="#">GET Training</a></li>
+                </ul>
+            </div>
+            <div class="f-col f-contact">
+                <h4>Contact Info</h4>
+                <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p>
+                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98848 75551 (Optional)</p>
+                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 63812 72033 (Optional)</p>
+                <p><i data-lucide="mail" style="width:16px;height:16px;"></i> official@apkinfotech.in</p>
+                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="mail" style="width:14px;height:14px;"></i> hr@apkinfotech.in</p>
+                <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> No 65, 5th street, Ram Nagar, Mannivakkam, Chennai - 600 048</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 APK INFOTECH IT SOLUTIONS PVT LTD All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+    lucide.createIcons();
+    gsap.registerPlugin(ScrollTrigger);
+
+    function toggleMenu(){
+        document.getElementById('mobMenu').classList.toggle('on');
+        document.getElementById('mobOverlay').classList.toggle('on');
+    }
+
+    // ── Page load animations ──
+    gsap.from('#hdr1', {
+        y: -30, opacity: 0, duration: 0.8,
+        ease: 'power2.out', delay: 0.1
+    });
+
+    gsap.from('#card-cto', {
+        x: -80, opacity: 0,
+        duration: 0.9, ease: 'power3.out', delay: 0.25
+    });
+
+    gsap.from('#card-coo', {
+        x: 80, opacity: 0,
+        duration: 0.9, ease: 'power3.out', delay: 0.4
+    });
+
+    gsap.from('#sec1 .team-badge', {
+        y: 10, opacity: 0,
+        duration: 0.4, ease: 'power2.out',
+        stagger: 0.1, delay: 0.8
+    });
+
+    // ── Scroll animations ──
+    gsap.from('#hdr2', {
+        y: -30, opacity: 0, duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger:{ trigger:'#sec2', start:'top 85%' }
+    });
+
+    gsap.from('#card-cmo', {
+        y: 60, opacity: 0,
+        duration: 0.9, ease: 'power3.out',
+        scrollTrigger:{ trigger:'#sec2', start:'top 80%' }
+    });
+
+    gsap.from('#sec2 .team-badge', {
+        y: 10, opacity: 0,
+        duration: 0.4, ease: 'power2.out',
+        scrollTrigger:{ trigger:'#sec2', start:'top 70%' },
+        delay: 0.3
+    });
+
+    // ── Scrub: sec1 cards stay visible, only slight scale ──
+    gsap.to(['#card-cto','#card-coo'], {
+        scale: 0.92,
+        scrollTrigger:{
+            trigger:'#sec2',
+            start:'top 60%', end:'top 20%',
+            scrub: 1.5
+        }
+    });
+</script>
+
+</body>
+</html>
