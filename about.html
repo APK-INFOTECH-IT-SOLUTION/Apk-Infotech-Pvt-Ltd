@@ -52,10 +52,10 @@
         .mob-links a{text-decoration:none;color:var(--text);font-size:1.1rem;font-weight:600;display:block;padding:.5rem 0;border-bottom:1px solid var(--border);}
         .mob-links a.active{color:var(--gold);}
 
-        /* ══ SCROLL WRAPPER — STICKY OVERLAY ══ */
+        /* ══ SCROLL WRAPPER ══ */
         .scroll-wrapper{ position:relative; }
 
-        /* ══ SECTIONS — STICKY OVERLAY EFFECT ══ */
+        /* ══ DESKTOP: BOTH SECTIONS STICKY ══ */
         .team-section{
             height:100vh;
             position:sticky;
@@ -83,37 +83,24 @@
 
         /* Decorative floating orbs */
         .s1::after{
-            content:'';
-            position:absolute;
-            width:380px;height:380px;border-radius:50%;
+            content:'';position:absolute;width:380px;height:380px;border-radius:50%;
             background:radial-gradient(circle,rgba(255,184,0,.06) 0%,transparent 70%);
             bottom:-100px;right:-100px;pointer-events:none;
             animation:floatOrb 8s ease-in-out infinite;
         }
         .s2::after{
-            content:'';
-            position:absolute;
-            width:340px;height:340px;border-radius:50%;
+            content:'';position:absolute;width:340px;height:340px;border-radius:50%;
             background:radial-gradient(circle,rgba(255,184,0,.07) 0%,transparent 70%);
             top:-80px;left:-80px;pointer-events:none;
             animation:floatOrb 9s ease-in-out infinite reverse;
         }
-        @keyframes floatOrb{
-            0%,100%{transform:translateY(0);}
-            50%{transform:translateY(-20px);}
-        }
+        @keyframes floatOrb{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
 
         /* ══ SECTION HEADER ══ */
         .section-header{text-align:center;margin-bottom:1.5rem;}
-        .section-header h2{
-            font-size:clamp(1.5rem,3vw,2.2rem);
-            color:var(--navy);
-        }
-        .section-header h2 span{
-            background:var(--grad-gold2);
-            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-        }
-        .section-header p{ font-size:.9rem;color:var(--text-light);margin-top:.3rem; }
+        .section-header h2{font-size:clamp(1.5rem,3vw,2.2rem);color:var(--navy);}
+        .section-header h2 span{background:var(--grad-gold2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .section-header p{font-size:.9rem;color:var(--text-light);margin-top:.3rem;}
         .sec-divider{width:50px;height:4px;background:var(--grad-gold2);border-radius:2px;margin:.5rem auto 0;}
 
         /* ══ TEAM GRID ══ */
@@ -133,29 +120,26 @@
             background:var(--grad-gold2);transform:scaleX(0);transform-origin:left;
             transition:transform .3s ease;z-index:2;
         }
-        .team-card:hover{ transform:translateY(-5px); box-shadow:var(--card-shadow-hover); }
-        .team-card:hover::before{ transform:scaleX(1); }
+        .team-card:hover{transform:translateY(-5px);box-shadow:var(--card-shadow-hover);}
+        .team-card:hover::before{transform:scaleX(1);}
 
-        .team-card-img-wrap{ position:relative;overflow:hidden; }
+        .team-card-img-wrap{position:relative;overflow:hidden;}
         .team-card-img{
             width:100%;height:220px;
             object-fit:cover;object-position:top center;display:block;
             transition:transform .4s ease;
         }
-        .team-card-img.tall{ height:240px; }
-        .team-card:hover .team-card-img{ transform:scale(1.03); }
+        .team-card-img.tall{height:240px;}
+        .team-card:hover .team-card-img{transform:scale(1.03);}
         .team-card-img-wrap::after{
             content:'';position:absolute;inset:0;
             background:linear-gradient(180deg,transparent 55%,rgba(11,12,42,.45));
             pointer-events:none;
         }
 
-        .team-card-body{ padding:1rem 1.1rem 1.1rem;text-align:center; }
-        .team-card-body h3{
-            font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;
-            color:var(--navy);margin-bottom:.2rem;
-        }
-        .team-card-body p{ font-size:.8rem;color:var(--text-light);margin-bottom:.5rem;line-height:1.4; }
+        .team-card-body{padding:1rem 1.1rem 1.1rem;text-align:center;}
+        .team-card-body h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
+        .team-card-body p{font-size:.8rem;color:var(--text-light);margin-bottom:.5rem;line-height:1.4;}
         .team-badge{
             display:inline-block;background:var(--grad-gold2);color:#fff;
             font-size:.65rem;font-weight:700;font-family:'Syne',sans-serif;
@@ -184,107 +168,126 @@
 
         /* ══ LAPTOP (769px - 1024px) ══ */
         @media(min-width:769px) and (max-width:1024px){
-            .cols-2{ max-width:560px; gap:1.2rem; }
-            .cols-1{ max-width:300px; }
-            .team-card-img{ height:200px; }
-            .team-card-img.tall{ height:220px; }
+            .cols-2{max-width:560px;gap:1.2rem;}
+            .cols-1{max-width:300px;}
+            .team-card-img{height:200px;}
+            .team-card-img.tall{height:220px;}
         }
 
         /* ══ DESKTOP (1025px - 1440px) ══ */
         @media(min-width:1025px) and (max-width:1440px){
-            .team-section{ padding:2rem 3rem; }
-            .cols-2{ max-width:680px; gap:1.5rem; }
-            .cols-1{ max-width:340px; }
-            .team-card-img{ height:240px; }
-            .team-card-img.tall{ height:260px; }
-            .team-card-body{ padding:1.1rem 1.2rem 1.2rem; }
-            .team-card-body h3{ font-size:1.05rem; }
-            .team-card-body p{ font-size:.82rem; }
-            .section-header h2{ font-size:2rem; }
-            .section-header p{ font-size:.95rem; }
+            .team-section{padding:2rem 3rem;}
+            .cols-2{max-width:680px;gap:1.5rem;}
+            .cols-1{max-width:340px;}
+            .team-card-img{height:240px;}
+            .team-card-img.tall{height:260px;}
+            .team-card-body{padding:1.1rem 1.2rem 1.2rem;}
+            .team-card-body h3{font-size:1.05rem;}
+            .team-card-body p{font-size:.82rem;}
+            .section-header h2{font-size:2rem;}
+            .section-header p{font-size:.95rem;}
         }
 
         /* ══ BIG SCREENS (>1440px) ══ */
         @media(min-width:1441px){
-            .team-section{ padding:2rem 3.5rem; }
-            .cols-2{ max-width:720px; gap:1.8rem; }
-            .cols-1{ max-width:360px; }
-            .team-card-img{ height:260px; }
-            .team-card-img.tall{ height:280px; }
-            .team-card-body{ padding:1.1rem 1.3rem 1.3rem; }
-            .team-card-body h3{ font-size:1.1rem; }
-            .team-card-body p{ font-size:.85rem; }
-            .section-header h2{ font-size:2.2rem; }
+            .team-section{padding:2rem 3.5rem;}
+            .cols-2{max-width:720px;gap:1.8rem;}
+            .cols-1{max-width:360px;}
+            .team-card-img{height:260px;}
+            .team-card-img.tall{height:280px;}
+            .team-card-body{padding:1.1rem 1.3rem 1.3rem;}
+            .team-card-body h3{font-size:1.1rem;}
+            .team-card-body p{font-size:.85rem;}
+            .section-header h2{font-size:2.2rem;}
         }
 
-        /* ══ MOBILE (<=768px) — STICKY OVERLAY with ONE CARD PER ROW ══ */
+        /* ══════════════════════════════════════════════
+           MOBILE (<=768px)
+           
+           LOGIC:
+           - s1: position:relative, height:auto — cards stacked normally
+           - s2: position:sticky, top:0, height:100vh — overlays s1 on scroll
+        ══════════════════════════════════════════════ */
         @media(max-width:768px){
             .nav-links{display:none;}
             .mob-btn{display:block;}
             .container,.nav-wrap{padding:0 1.1rem;}
             .footer-grid{grid-template-columns:1fr;gap:2rem;}
 
-            /* Sticky overlay - IMPORTANT: Keep height:100vh for sticky to work */
-            .team-section{
-                height:100vh;
-                position:sticky;
-                top:0;
-                padding:1.5rem 1rem;
-                justify-content:center;
+            /* ── Section 1: Normal flow, NOT sticky ── */
+            /* Cards scroll naturally, no sticky, no fixed height */
+            .s1{
+                position:relative !important;
+                height:auto !important;
+                min-height:unset !important;
+                padding:3rem 1rem 4rem; /* extra bottom padding so s2 doesn't cut off */
+                align-items:center;
+                justify-content:flex-start;
+                padding-top:3rem;
             }
-            .s1{ z-index:10; }
+
+            /* ── Section 2: Sticky overlay ── */
+            /* Sticks to top, covers s1 as user scrolls */
             .s2{
+                position:sticky !important;
+                top:0 !important;
+                height:100vh !important;
                 z-index:20;
                 border-radius:20px 20px 0 0;
+                justify-content:center;
+                align-items:center;
             }
-            .s2::before{ border-radius:20px 20px 0 0; }
+            .s2::before{border-radius:20px 20px 0 0;}
 
-            /* FORCE single column — one card per row */
-            .cols-2, .cols-1{
+            /* ── Force single column — one card per row ── */
+            .cols-2,
+            .cols-1{
                 grid-template-columns:1fr !important;
                 max-width:100% !important;
                 width:100% !important;
                 gap:1rem;
             }
 
-            .team-card{ border-radius:16px; }
-            .team-card-img{ height:200px; }
-            .team-card-img.tall{ height:220px; }
-            .team-card-body{ padding:1rem 1.1rem 1.1rem; }
-            .team-card-body h3{ font-size:1rem; }
-            .team-card-body p{ font-size:.82rem; }
-            .section-header{ margin-bottom:1.2rem; }
-            .section-header h2{ font-size:1.5rem; }
-            .section-header p{ font-size:.85rem; }
-            .sec-divider{ width:45px; }
-            .s1::after,.s2::after{ width:180px;height:180px; }
+            .team-card{border-radius:16px;}
+            .team-card-img{height:200px;}
+            .team-card-img.tall{height:220px;}
+            .team-card-body{padding:1rem 1.1rem 1.1rem;}
+            .team-card-body h3{font-size:1rem;}
+            .team-card-body p{font-size:.82rem;}
+            .section-header{margin-bottom:1.2rem;}
+            .section-header h2{font-size:1.5rem;}
+            .section-header p{font-size:.85rem;}
+            .sec-divider{width:45px;}
+            .s1::after,.s2::after{width:180px;height:180px;}
+
+            /* Remove desktop scroll-scrub scale on mobile */
+            #card-cto,#card-coo{transform:none !important;}
         }
 
         /* ══ SMALL PHONE (<=480px) ══ */
         @media(max-width:480px){
-            .team-section{ padding:1.2rem .8rem; }
-            .s2{ border-radius:16px 16px 0 0; }
-            .s2::before{ border-radius:16px 16px 0 0; }
-            .team-card{ border-radius:14px; }
-            .team-card-img{ height:180px; }
-            .team-card-img.tall{ height:200px; }
-            .team-card-body{ padding:.9rem 1rem 1rem; }
-            .team-card-body h3{ font-size:.95rem; }
-            .team-card-body p{ font-size:.78rem; }
-            .section-header h2{ font-size:1.3rem; }
-            .section-header{ margin-bottom:1rem; }
-            .team-badge{ font-size:.62rem; padding:.15rem .6rem; }
+            .s1{padding:2.5rem .9rem 3.5rem;}
+            .s2{border-radius:16px 16px 0 0;}
+            .s2::before{border-radius:16px 16px 0 0;}
+            .team-card{border-radius:14px;}
+            .team-card-img{height:180px;}
+            .team-card-img.tall{height:200px;}
+            .team-card-body{padding:.9rem 1rem 1rem;}
+            .team-card-body h3{font-size:.95rem;}
+            .team-card-body p{font-size:.78rem;}
+            .section-header h2{font-size:1.3rem;}
+            .section-header{margin-bottom:1rem;}
+            .team-badge{font-size:.62rem;padding:.15rem .6rem;}
         }
 
         /* ══ TINY PHONE (<=360px) ══ */
         @media(max-width:360px){
-            .team-card-img{ height:160px; }
-            .team-card-img.tall{ height:180px; }
-            .team-card-body h3{ font-size:.88rem; }
-            .team-card-body p{ font-size:.74rem; }
+            .team-card-img{height:160px;}
+            .team-card-img.tall{height:180px;}
+            .team-card-body h3{font-size:.88rem;}
+            .team-card-body p{font-size:.74rem;}
         }
     </style>
-<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -329,6 +332,8 @@
 <div class="scroll-wrapper">
 
     <!-- SECTION 1: CTO + COO -->
+    <!-- Mobile: position:relative, height:auto → cards stack vertically -->
+    <!-- Desktop: position:sticky, height:100vh → normal sticky overlay -->
     <section class="team-section s1" id="sec1">
         <div class="section-header" id="hdr1">
             <h2>Meet Our <span>Leadership</span></h2>
@@ -360,6 +365,7 @@
     </section>
 
     <!-- SECTION 2: CMO -->
+    <!-- Mobile: position:sticky, top:0, height:100vh → overlays section 1 -->
     <section class="team-section s2" id="sec2">
         <div class="section-header" id="hdr2">
             <h2>Our <span>Marketing Head</span></h2>
@@ -447,6 +453,8 @@
         document.getElementById('mobOverlay').classList.toggle('on');
     }
 
+    const isMobile = window.innerWidth <= 768;
+
     // ── Page load animations ──
     gsap.from('#hdr1', {
         y: -30, opacity: 0, duration: 0.8,
@@ -489,15 +497,18 @@
         delay: 0.3
     });
 
-    // ── Scrub: sec1 cards stay visible, only slight scale ──
-    gsap.to(['#card-cto','#card-coo'], {
-        scale: 0.92,
-        scrollTrigger:{
-            trigger:'#sec2',
-            start:'top 60%', end:'top 20%',
-            scrub: 1.5
-        }
-    });
+    // ── Desktop only: scrub scale on s1 cards ──
+    // Mobile-la இந்த effect வேண்டாம் — CSS override பண்ணியிருக்கோம்
+    if (!isMobile) {
+        gsap.to(['#card-cto','#card-coo'], {
+            scale: 0.92,
+            scrollTrigger:{
+                trigger:'#sec2',
+                start:'top 60%', end:'top 20%',
+                scrub: 1.5
+            }
+        });
+    }
 </script>
 
 </body>
