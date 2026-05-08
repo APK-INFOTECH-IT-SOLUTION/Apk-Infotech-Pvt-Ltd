@@ -75,15 +75,13 @@
         .s2{z-index:20;background:var(--bg2);}
         .s3{z-index:30;background:var(--bg);}
         .s4{z-index:40;background:var(--bg2);}
-        .s5{z-index:50;background:var(--bg);}
-        .s6{z-index:60;background:var(--bg2);}
 
         /* Gold top bar + shadow for all overlay sections */
-        .s2,.s3,.s4,.s5,.s6{
+        .s2,.s3,.s4{
             box-shadow:0 -20px 60px rgba(11,12,42,.25),0 -4px 20px rgba(11,12,42,.15);
             border-radius:28px 28px 0 0;
         }
-        .s2::before,.s3::before,.s4::before,.s5::before,.s6::before{
+        .s2::before,.s3::before,.s4::before{
             content:'';
             position:absolute;top:0;left:0;right:0;height:4px;
             background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);
@@ -98,8 +96,8 @@
             background:radial-gradient(circle,rgba(255,184,0,.06) 0%,transparent 70%);
             pointer-events:none;animation:floatOrb 9s ease-in-out infinite;
         }
-        .s1::after,.s3::after,.s5::after{bottom:-80px;right:-80px;}
-        .s2::after,.s4::after,.s6::after{top:-80px;left:-80px;animation-direction:reverse;}
+        .s1::after,.s3::after{bottom:-80px;right:-80px;}
+        .s2::after,.s4::after{top:-80px;left:-80px;animation-direction:reverse;}
         @keyframes floatOrb{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
 
         /* ══ SECTION CONTENT ══ */
@@ -120,6 +118,7 @@
         .team-grid{display:grid;gap:1.4rem;width:100%;justify-items:center;}
         .cols-2{grid-template-columns:repeat(2,1fr);max-width:620px;}
         .cols-1{grid-template-columns:1fr;max-width:300px;}
+        .cols-3{grid-template-columns:repeat(3,1fr);max-width:880px;justify-items:center;}
 
         /* ══ TEAM CARD ══ */
         .team-card{
@@ -188,6 +187,8 @@
         @media(min-width:769px) and (max-width:1024px){
             .cols-2{max-width:540px;gap:1.2rem;}
             .cols-1{max-width:270px;}
+            .cols-3{max-width:800px;gap:1rem;}
+            .cols-3 .team-card-img{max-height:200px;}
             .team-card-img{max-height:230px;}
             .sec-inner{padding:0 1.5rem;}
         }
@@ -197,6 +198,8 @@
             .sec-inner{padding:0 2.5rem;}
             .cols-2{max-width:660px;gap:1.4rem;}
             .cols-1{max-width:310px;}
+            .cols-3{max-width:920px;gap:1.3rem;}
+            .cols-3 .team-card-img{max-height:220px;}
             .team-card-img{max-height:255px;}
             .team-name{font-size:1rem;}
             .team-role{font-size:.8rem;}
@@ -208,6 +211,8 @@
             .sec-inner{padding:0 3rem;}
             .cols-2{max-width:720px;gap:1.8rem;}
             .cols-1{max-width:340px;}
+            .cols-3{max-width:1020px;gap:1.6rem;}
+            .cols-3 .team-card-img{max-height:240px;}
             .team-card-img{max-height:290px;}
             .team-name{font-size:1.05rem;}
             .team-role{font-size:.82rem;}
@@ -216,12 +221,8 @@
 
         /* ══════════════════════════════════════════════
            MOBILE ≤768px
-
-           s1 (Directors — 2 cards): position:relative + height:auto
-             → cards scroll normally in the page flow
-           s2–s6: position:sticky + height:100vh
-             → each overlays the previous on scroll
-           Single column, full pic visible (object-fit:contain)
+           ALL sections: position:relative + height:auto
+           → full scroll, nothing hidden, one card per row, centered
         ══════════════════════════════════════════════ */
         @media(max-width:768px){
             .nav-links{display:none;}
@@ -229,49 +230,60 @@
             .container,.nav-wrap{padding:0 1.1rem;}
             .footer-grid{grid-template-columns:1fr;gap:2rem;}
 
-            /* s1: normal flow — user scrolls through 2 director cards */
-            .s1{
+            /* ALL sections — normal flow, no fixed height, nothing cut */
+            .team-section{
                 position:relative !important;
                 height:auto !important;
                 min-height:unset !important;
-                padding:2.8rem 1rem 4rem;
+                overflow:visible !important;
+                padding:2.8rem 1rem 3.5rem;
                 align-items:center;
                 justify-content:flex-start;
+                border-radius:0 !important;
+                box-shadow:none !important;
+            }
+            /* re-apply top border for s2/s3/s4 */
+            .s2,.s3,.s4{
+                border-top:3px solid var(--gold);
+                box-shadow:0 -6px 24px rgba(11,12,42,.10) !important;
+            }
+            .s2::before,.s3::before,.s4::before{display:none;}
+
+            /* Single column — one card per row, perfectly centered */
+            .cols-2,.cols-1,.cols-3{
+                grid-template-columns:1fr !important;
+                max-width:400px !important;
+                width:100% !important;
+                margin:0 auto !important;
+                gap:1.1rem;
+                justify-items:center !important;
             }
 
-            /* s2–s6: sticky overlay — each slides over the previous */
-            .s2,.s3,.s4,.s5,.s6{
-                position:sticky !important;
-                top:0 !important;
-                height:100vh !important;
-                border-radius:20px 20px 0 0;
-                justify-content:center;
+            /* Each card full width, centered */
+            .team-card{
+                width:100% !important;
+                max-width:400px !important;
+                margin:0 auto !important;
+                border-radius:14px;
+            }
+
+            .sec-inner{
+                padding:0 1rem;
+                max-width:100%;
+                width:100%;
                 align-items:center;
             }
-            .s2::before,.s3::before,.s4::before,.s5::before,.s6::before{
-                border-radius:20px 20px 0 0;
+
+            /* Full pic — no crop, full person visible */
+            .team-card-img-wrap{
+                background:#f0f1ff;
             }
-
-            /* Single column */
-            .cols-2,.cols-1{
-                grid-template-columns:1fr !important;
-                max-width:100% !important;
-                width:100% !important;
-                gap:.9rem;
-            }
-
-            /* Ensure section 1 directors stack like section 6 CMO cards on phones */
-            .s1 .sec-inner{align-items:center;}
-            .s1 .team-grid{display:flex !important;flex-direction:column !important;align-items:center !important;}
-            .s1 .team-card{width:min(100%,420px);max-width:420px;margin:0 auto;}
-
-            .sec-inner{padding:0 1rem;max-width:100%;}
-            .team-card{border-radius:14px;}
-
-            /* Full pic visible — height relative to viewport width */
             .team-card-img{
-                max-height:48vw;
-                object-fit:contain;
+                width:100%;
+                height:auto !important;
+                max-height:none !important;
+                min-height:200px;
+                object-fit:contain !important;
                 object-position:top center;
             }
 
@@ -283,15 +295,15 @@
             .section-header h2{font-size:1.45rem;}
             .section-header p{font-size:.82rem;}
             .sec-divider{width:40px;}
-            .team-section::after{width:150px;height:150px;}
+            .team-section::after{display:none;}
         }
 
         /* ══ SMALL PHONE ≤480px ══ */
         @media(max-width:480px){
-            .s1{padding:2.5rem .85rem 3.5rem;}
-            .s2,.s3,.s4,.s5,.s6{border-radius:16px 16px 0 0;}
-            .s2::before,.s3::before,.s4::before,.s5::before,.s6::before{border-radius:16px 16px 0 0;}
-            .team-card-img{max-height:52vw;}
+            .team-section{padding:2.2rem .85rem 3rem;}
+            .cols-2,.cols-1,.cols-3{max-width:340px !important;}
+            .team-card{max-width:340px !important;}
+            .team-card-img{min-height:170px;}
             .section-header h2{font-size:1.28rem;}
             .team-name{font-size:.85rem;}
             .team-role{font-size:.72rem;}
@@ -299,7 +311,9 @@
 
         /* ══ TINY ≤360px ══ */
         @media(max-width:360px){
-            .team-card-img{max-height:56vw;}
+            .cols-2,.cols-1,.cols-3{max-width:300px !important;}
+            .team-card{max-width:300px !important;}
+            .team-card-img{min-height:150px;}
             .team-name{font-size:.8rem;}
             .team-role{font-size:.68rem;}
         }
@@ -403,15 +417,15 @@
         </div>
     </section>
 
-    <!-- SECTION 3 · COO · 1 card -->
+    <!-- SECTION 3 · COO + CTO + CFO · 3 cards -->
     <section class="team-section s3" id="sec3">
-        <div class="sec-inner">
+        <div class="sec-inner" style="max-width:960px;">
             <div class="section-header" id="hdr3">
-                <h2>Our <span>Operations Head</span></h2>
-                <p>Ensuring excellence in every process and delivery</p>
+                <h2>Our <span>Leadership Team</span></h2>
+                <p>Operations, Technology & Finance — the core pillars driving APK INFOTECH</p>
                 <div class="sec-divider"></div>
             </div>
-            <div class="team-grid cols-1">
+            <div class="team-grid cols-3">
                 <div class="team-card" id="card-coo">
                     <div class="team-card-img-wrap">
                         <img src="COO.png" alt="COO" class="team-card-img">
@@ -422,19 +436,6 @@
                         <span class="team-badge">COO</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4 · CTO · 1 card -->
-    <section class="team-section s4" id="sec4">
-        <div class="sec-inner">
-            <div class="section-header" id="hdr4">
-                <h2>Our <span>Technology Head</span></h2>
-                <p>Engineering tomorrow's solutions today</p>
-                <div class="sec-divider"></div>
-            </div>
-            <div class="team-grid cols-1">
                 <div class="team-card" id="card-cto">
                     <div class="team-card-img-wrap">
                         <img src="CTO.png" alt="CTO" class="team-card-img">
@@ -445,19 +446,6 @@
                         <span class="team-badge">CTO</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 5 · CFO · 1 card -->
-    <section class="team-section s5" id="sec5">
-        <div class="sec-inner">
-            <div class="section-header" id="hdr5">
-                <h2>Our <span>Finance Head</span></h2>
-                <p>Building financial strength and sustainable growth</p>
-                <div class="sec-divider"></div>
-            </div>
-            <div class="team-grid cols-1">
                 <div class="team-card" id="card-cfo">
                     <div class="team-card-img-wrap">
                         <img src="CFO.png" alt="CFO" class="team-card-img">
@@ -472,10 +460,10 @@
         </div>
     </section>
 
-    <!-- SECTION 6 · CMO x2 · 2 cards -->
-    <section class="team-section s6" id="sec6">
+    <!-- SECTION 4 · CMO x2 · 2 cards -->
+    <section class="team-section s4" id="sec4">
         <div class="sec-inner">
-            <div class="section-header" id="hdr6">
+            <div class="section-header" id="hdr4">
                 <h2>Our <span>Marketing Team</span></h2>
                 <p>Building our brand presence and community</p>
                 <div class="sec-divider"></div>
@@ -520,7 +508,7 @@
                 <div class="socials">
                     <a href="#" class="social-a" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
                     <a href="#" class="social-a" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
-                    <a href="https://wa.me/918939410255" target="_blank" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    <a href="https://wa.me/918939410255" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
                 </div>
             </div>
             <div class="f-col">
@@ -547,11 +535,11 @@
             </div>
             <div class="f-col f-contact">
                 <h4>Contact Info</h4>
-                <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p>
-                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98848 75551 (Optional)</p>
-                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 63812 72033 (Optional)</p>
+                <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 98848 75551</p>
+                <p style="margin-top:.35rem;"><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p>
+                <p style="margin-top:.35rem;"><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 63812 72033</p>
                 <p><i data-lucide="mail" style="width:16px;height:16px;"></i> official@apkinfotech.in</p>
-                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="mail" style="width:14px;height:14px;"></i> hr@apkinfotech.in</p>
+                <p style="margin-top:.35rem;"><i data-lucide="mail" style="width:16px;height:16px;"></i> hr@apkinfotech.in</p>
                 <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> No 65, 5th street, Ram Nagar, Mannivakkam, Chennai - 600 048</p>
             </div>
         </div>
@@ -576,21 +564,33 @@
 
     /* ── Section 1: page-load animations ── */
     gsap.from('#hdr1',      { y:-30,opacity:0,duration:.8,ease:'power2.out',delay:.1 });
-    gsap.from('#card-dir1', { x:-80,opacity:0,duration:.9,ease:'power3.out',delay:.25 });
-    gsap.from('#card-dir2', { x:80, opacity:0,duration:.9,ease:'power3.out',delay:.4 });
+    if(isMobile){
+        gsap.from('#card-dir1', { y:60,opacity:0,duration:.9,ease:'power3.out',delay:.25 });
+        gsap.from('#card-dir2', { y:60,opacity:0,duration:.9,ease:'power3.out',delay:.4 });
+    } else {
+        gsap.from('#card-dir1', { x:-80,opacity:0,duration:.9,ease:'power3.out',delay:.25 });
+        gsap.from('#card-dir2', { x:80, opacity:0,duration:.9,ease:'power3.out',delay:.4 });
+    }
     gsap.from('#sec1 .team-badge',{ y:10,opacity:0,duration:.4,ease:'power2.out',stagger:.1,delay:.75 });
 
-    /* ── Sections 2–6: scroll-triggered animations ── */
+    /* ── Sections 2–4: scroll-triggered animations ── */
     [
-        { sec:'sec2',hdr:'hdr2',cards:['card-ceo'],                twoCol:false },
-        { sec:'sec3',hdr:'hdr3',cards:['card-coo'],                twoCol:false },
-        { sec:'sec4',hdr:'hdr4',cards:['card-cto'],                twoCol:false },
-        { sec:'sec5',hdr:'hdr5',cards:['card-cfo'],                twoCol:false },
-        { sec:'sec6',hdr:'hdr6',cards:['card-cmo1','card-cmo2'],   twoCol:true  },
-    ].forEach(({sec,hdr,cards,twoCol})=>{
+        { sec:'sec2',hdr:'hdr2',cards:['card-ceo'],                      twoCol:false, threeCol:false },
+        { sec:'sec3',hdr:'hdr3',cards:['card-coo','card-cto','card-cfo'], twoCol:false, threeCol:true  },
+        { sec:'sec4',hdr:'hdr4',cards:['card-cmo1','card-cmo2'],          twoCol:true,  threeCol:false },
+    ].forEach(({sec,hdr,cards,twoCol,threeCol})=>{
         const t='#'+sec;
         gsap.from('#'+hdr,{y:-30,opacity:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:t,start:'top 85%'}});
-        if(twoCol){
+        if(isMobile){
+            // Mobile: all cards animate from bottom (y), one per row — no left/right offset
+            cards.forEach((c,i)=>{
+                gsap.from('#'+c,{y:60,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'},delay:i*.15});
+            });
+        } else if(threeCol){
+            gsap.from('#'+cards[0],{x:-80,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'}});
+            gsap.from('#'+cards[1],{y:60, opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'},delay:.15});
+            gsap.from('#'+cards[2],{x:80, opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'},delay:.3});
+        } else if(twoCol){
             gsap.from('#'+cards[0],{x:-80,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'}});
             gsap.from('#'+cards[1],{x:80, opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'},delay:.15});
         } else {
@@ -602,11 +602,9 @@
     /* ── Desktop: scrub scale as next section slides over ── */
     if(!isMobile){
         [
-            {cards:['#card-dir1','#card-dir2'], trigger:'#sec2'},
-            {cards:['#card-ceo'],               trigger:'#sec3'},
-            {cards:['#card-coo'],               trigger:'#sec4'},
-            {cards:['#card-cto'],               trigger:'#sec5'},
-            {cards:['#card-cfo'],               trigger:'#sec6'},
+            {cards:['#card-dir1','#card-dir2'],              trigger:'#sec2'},
+            {cards:['#card-ceo'],                            trigger:'#sec3'},
+            {cards:['#card-coo','#card-cto','#card-cfo'],    trigger:'#sec4'},
         ].forEach(({cards,trigger})=>{
             gsap.to(cards,{scale:.92,scrollTrigger:{trigger,start:'top 60%',end:'top 20%',scrub:1.5}});
         });
