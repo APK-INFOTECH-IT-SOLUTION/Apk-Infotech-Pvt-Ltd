@@ -56,7 +56,7 @@
         .mob-links a.active{color:var(--gold);}
 
         /* ══ SCROLL WRAPPER ══ */
-        .scroll-wrapper{position:relative;}
+        .scroll-wrapper{position:relative;overflow:visible;}
 
         /* ══ STICKY SECTIONS — all stick and stack ══ */
         .team-section{
@@ -236,12 +236,15 @@
                 height:auto !important;
                 min-height:unset !important;
                 overflow:visible !important;
-                padding:2.8rem 1rem 3.5rem;
+                padding:2.8rem 1rem 4.5rem;
                 align-items:center;
                 justify-content:flex-start;
                 border-radius:0 !important;
                 box-shadow:none !important;
+                z-index:auto !important;
             }
+            /* s1 extra bottom padding so s2 overlay doesn't clip the last card */
+            .s1{ padding-bottom:6rem !important; }
             /* re-apply top border for s2/s3/s4 */
             .s2,.s3,.s4{
                 border-top:3px solid var(--gold);
