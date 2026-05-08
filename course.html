@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Courses | APK INFOTECH IT SOLUTIONS</title>
+    <title>Achievements | APK INFOTECH IT SOLUTIONS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -11,24 +11,14 @@
     <style>
         :root {
             --navy: #0B0C2A;
-            --navy-deep: #060616;
-            --navy-mid: #151638;
             --gold: #FFB800;
             --gold-light: #FFD250;
-            --gold-pale: #FFF3CC;
-            --accent: #FFB800;
-            --accent-warm: #FFCA3A;
-            --accent-glow: rgba(255,184,0,0.13);
-            --accent-glow-strong: rgba(255,184,0,0.28);
             --bg: #F0F2FF;
-            --bg2: #ffffff;
             --text: #0B0C2A;
-            --text-mid: #2E2F6A;
             --text-light: #6B6CA0;
             --border: rgba(11,12,42,0.09);
             --card-shadow: 0 4px 24px rgba(11,12,42,0.08);
             --card-shadow-hover: 0 16px 48px rgba(11,12,42,0.17);
-            --grad: linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);
             --grad-gold: linear-gradient(135deg, #FFB800 0%, #FFE066 50%, #FFB800 100%);
             --grad-gold2: linear-gradient(135deg, #E6A000 0%, #FFD250 100%);
         }
@@ -36,29 +26,23 @@
         html{scroll-behavior:smooth;}
         body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
         h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;font-weight:700;}
-
         ::-webkit-scrollbar{width:6px;}
         ::-webkit-scrollbar-track{background:var(--bg);}
         ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
-
-        /* LOADER (disabled) */
-        #pageLoader{display:none !important;}
-
-        /* NAVBAR */
-        .navbar{position:relative;width:100%;z-index:900;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
-        .nav-wrap{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+        .navbar{position:fixed;top:0;left:0;width:100%;z-index:9999;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
+        .nav-wrap{max-width:1300px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;}
         .logo{text-decoration:none;display:flex;align-items:center;gap:.6rem;}
-        .logo-text{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#ffffff;line-height:1.15;}
-        .logo-text span{display:block;font-size:.7rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
-        .nav-links{display:flex;gap:2.25rem;list-style:none;}
-        .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem;position:relative;transition:color .3s;}
+        .logo img{height:42px;width:auto;object-fit:contain;}
+        .logo-text{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff;line-height:1.15;}
+        .logo-text span{display:block;font-size:.65rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
+        .nav-links{display:flex;gap:2rem;list-style:none;}
+        .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);font-weight:500;font-size:.9rem;position:relative;transition:color .3s;}
         .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);border-radius:2px;transition:width .3s;}
         .nav-links a:hover{color:var(--gold-light);}
         .nav-links a:hover::after{width:100%;}
         .nav-links a.active{color:var(--gold);}
         .nav-links a.active::after{width:100%;}
-        .mob-btn{display:none;background:none;border:none;cursor:pointer;color:#ffffff;}
-        
+        .mob-btn{display:none;background:none;border:none;cursor:pointer;color:#fff;}
         .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:901;opacity:0;pointer-events:none;transition:opacity .3s;}
         .mob-overlay.on{opacity:1;pointer-events:all;}
         .mob-menu{position:fixed;top:0;right:-100%;width:78%;max-width:340px;height:100vh;background:#fff;z-index:902;padding:5rem 2rem 2rem;box-shadow:-10px 0 40px rgba(0,0,0,.15);transition:right .35s cubic-bezier(.4,0,.2,1);}
@@ -67,120 +51,107 @@
         .mob-links{list-style:none;display:flex;flex-direction:column;gap:1.25rem;}
         .mob-links a{text-decoration:none;color:var(--text);font-size:1.1rem;font-weight:600;display:block;padding:.5rem 0;border-bottom:1px solid var(--border);}
         .mob-links a.active{color:var(--gold);}
-
-        /* SEARCH SECTION */
-        .search-section{padding:2.5rem 0;background:#fff;border-bottom:1px solid var(--border);margin-top:60px;}
-        .search-wrap{max-width:700px;margin:0 auto;}
-        .search-box{display:flex;align-items:center;gap:.75rem;background:var(--bg);border:2px solid var(--border);border-radius:14px;padding:1rem 1.25rem;transition:all .3s;}
-        .search-box:focus-within{border-color:var(--gold);box-shadow:0 4px 24px rgba(255,184,0,.18);}
-        .search-box i{color:var(--text-light);flex-shrink:0;}
-        .search-box input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--navy);background:transparent;}
-        .search-box input::placeholder{color:var(--text-light);}
-        .search-btn{background:var(--grad-gold2);color:#fff;border:none;padding:.6rem 1.5rem;border-radius:10px;font-weight:600;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif;}
-        .search-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.4);}
-        .filter-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;justify-content:center;}
-        .ftag{padding:.35rem 1rem;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;border:1.5px solid var(--border);background:#fff;color:var(--text-mid);transition:all .25s;}
-        .ftag:hover{border-color:var(--gold);color:var(--gold);}
-        .ftag.active{background:var(--grad-gold2);color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(255,184,0,.3);}
-
-        /* COURSES GRID */
-        .courses-section{padding:4rem 0;}
-        .sec-head{text-align:center;max-width:620px;margin:0 auto 3rem;}
-        .sec-head h2{font-size:clamp(1.9rem,3.5vw,2.6rem);margin-bottom:.75rem;color:var(--navy);}
-        .sec-head h2 span{background:var(--grad-gold2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-        .sec-head p{color:var(--text-mid);font-size:1.05rem;}
-        .sec-divider{width:60px;height:4px;background:var(--grad-gold2);border-radius:2px;margin:.9rem auto 0;}
-
-        .courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
-        .course-card{background:#fff;border-radius:20px;border:1px solid var(--border);overflow:hidden;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;display:flex;flex-direction:column;}
-        .course-card:hover{transform:translateY(-8px);box-shadow:var(--card-shadow-hover);border-color:rgba(201,168,76,.3);}
-        .course-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--grad-gold2);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
-        .course-card:hover::before{transform:scaleX(1);}
-        .course-img-area{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#f5f6ff 0%,#e8ebff 100%);}
-        .course-img-area img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
-        .course-card:hover .course-img-area img{transform:scale(1.08);}
-        .course-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,14,46,.7));}
-        .course-category{position:absolute;top:1rem;left:1rem;background:var(--grad-gold2);color:#fff;padding:.25rem .75rem;border-radius:20px;font-size:.72rem;font-weight:700;font-family:'Syne',sans-serif;z-index:2;}
-        .course-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
-        .course-body h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--navy);line-height:1.35;}
-        .course-body p{color:var(--text-mid);font-size:.88rem;line-height:1.6;margin-bottom:1rem;flex:1;}
-        .course-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;font-size:.8rem;color:var(--text-light);}
-        .course-meta span{display:flex;align-items:center;gap:.35rem;}
-        .course-meta i{width:16px;height:16px;color:var(--gold);}
-        .course-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--border);}
-        .course-btn{background:var(--grad-gold2);color:#fff;padding:.5rem 1.1rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem;display:inline-flex;align-items:center;gap:.35rem;transition:all .3s;box-shadow:0 4px 14px rgba(201,168,76,.35);}
-        .course-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.5);}
-
-        /* FOOTER */
-        .footer{background:linear-gradient(160deg,#080920 0%,#0d1035 50%,#080920 100%);color:#fff;padding:3rem 0 0;position:relative;overflow:hidden;}
+        .title-section{background:linear-gradient(135deg,#1a1c5c 0%,#2E2F6A 50%,#1F2270 100%);padding:100px 1.5rem 40px;text-align:center;position:relative;overflow:hidden;z-index:100;}
+        .title-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(255,184,0,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,184,0,0.05) 0%,transparent 50%);pointer-events:none;}
+        .title{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:#fff;margin-bottom:0.5rem;position:relative;z-index:1;}
+        .title span{background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .sec-divider{width:60px;height:4px;background:var(--grad-gold);border-radius:2px;margin:0.8rem auto 0;position:relative;z-index:1;}
+        .title-sub{color:rgba(255,255,255,0.7);font-size:0.95rem;margin-top:0.8rem;position:relative;z-index:1;}
+        .scroll-wrapper{position:relative;}
+        .ach-section{height:100vh;position:sticky;top:0;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:1rem;overflow:hidden;}
+        .s1{z-index:10;background:#F0F2FF;}
+        .s2{z-index:20;background:#e8eaff;box-shadow:0 -8px 40px rgba(11,12,42,0.13);}
+        .s3{z-index:30;background:#dde0ff;box-shadow:0 -8px 40px rgba(11,12,42,0.18);}
+        .s2::before,.s3::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);border-radius:inherit;}
+        .hero-img-wrap{width:min(90vw,600px);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(11,12,42,0.22);border:3px solid rgba(255,184,0,.3);}
+        .hero-img-wrap img{width:100%;height:auto;display:block;object-fit:cover;}
+        .section-header{text-align:center;margin-bottom:1.5rem;}
+        .section-header h2{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--navy);margin-bottom:.4rem;}
+        .section-header h2 span{background:var(--grad-gold2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .ach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;width:100%;max-width:1200px;padding:0 1rem;}
+        .ach-card{background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s;position:relative;}
+        .ach-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--grad-gold2);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+        .ach-card:hover{transform:translateY(-8px);box-shadow:var(--card-shadow-hover);}
+        .ach-card:hover::before{transform:scaleX(1);}
+        .ach-card-img-wrap{width:100%;height:200px;overflow:hidden;background:linear-gradient(135deg,#e8eaff 0%,#d0d4ff 100%);}
+        .ach-card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+        .ach-card:hover .ach-card-img{transform:scale(1.05);}
+        .ach-card-body{padding:1.2rem 1rem;text-align:center;}
+        .ach-card-body h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);}
+        .ach-badge{display:inline-block;margin-top:0.5rem;background:var(--grad-gold2);color:#fff;font-size:0.72rem;font-weight:700;font-family:'Syne',sans-serif;padding:0.2rem 0.8rem;border-radius:20px;letter-spacing:0.04em;}
+        .footer{background:linear-gradient(160deg,#080920 0%,#0d1035 50%,#080920 100%);color:#fff;padding:3rem 0 0;position:relative;overflow:hidden;z-index:40;}
         .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);}
-        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2.5rem;padding-bottom:2.5rem;}
-        .f-brand p{color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.75;margin-bottom:1.35rem;margin-top:.75rem;}
-        .f-col h4{font-size:.95rem;font-weight:700;margin-bottom:1.25rem;color:#fff;letter-spacing:.03em;position:relative;padding-bottom:.6rem;}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2.5rem;max-width:1300px;margin:0 auto;padding:0 2rem 2.5rem;}
+        .f-brand p{color:rgba(255,255,255,.55);font-size:0.9rem;line-height:1.75;margin-bottom:1.35rem;margin-top:0.75rem;}
+        .f-col h4{font-size:0.95rem;font-weight:700;margin-bottom:1.25rem;color:#fff;letter-spacing:0.03em;position:relative;padding-bottom:0.6rem;}
         .f-col h4::after{content:'';position:absolute;bottom:0;left:0;width:24px;height:2px;background:var(--gold);border-radius:2px;}
-        .f-links{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
-        .f-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.88rem;transition:all .3s;display:flex;align-items:center;gap:.4rem;}
+        .f-links{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+        .f-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:0.88rem;transition:all .3s;display:flex;align-items:center;gap:0.4rem;}
         .f-links a::before{content:'›';color:var(--gold);opacity:0;transition:opacity .2s,transform .2s;transform:translateX(-4px);}
         .f-links a:hover{color:var(--gold-light);padding-left:4px;}
         .f-links a:hover::before{opacity:1;transform:translateX(0);}
-        .f-contact p{color:rgba(255,255,255,.55);font-size:.88rem;margin-bottom:.75rem;display:flex;align-items:center;gap:.65rem;}
+        .f-contact p{color:rgba(255,255,255,.55);font-size:0.88rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.65rem;}
         .f-contact p i{color:var(--gold);flex-shrink:0;}
-        .socials{display:flex;gap:.75rem;}
+        .socials{display:flex;gap:0.75rem;}
         .social-a{width:40px;height:40px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);text-decoration:none;transition:all .3s;}
         .social-a:hover{background:var(--gold);color:#0B0C2A;border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 18px rgba(255,184,0,.3);}
-        .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;text-align:center;color:rgba(255,255,255,.3);font-size:.82rem;background:rgba(0,0,0,.2);}
-
-        /* CONTAINER */
-        .container{max-width:1300px;margin:0 auto;padding:0 2rem;}
-
-        /* RESPONSIVE */
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;text-align:center;color:rgba(255,255,255,.3);font-size:0.82rem;background:rgba(0,0,0,.2);}
         @media(max-width:1024px){
+            .ach-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem;}
+            .ach-card-img-wrap{height:180px;}
             .footer-grid{grid-template-columns:1fr 1fr;}
         }
         @media(max-width:768px){
             .nav-links{display:none;}
             .mob-btn{display:block;}
-            .courses-grid{grid-template-columns:1fr;}
-            .footer-grid{grid-template-columns:1fr;gap:2rem;}
-            .search-section{margin-top:56px;}
-            .container,.nav-wrap{padding:0 1.1rem;}
-            .search-section{padding:2rem 0;}
-            .search-box{padding:.9rem 1rem;}
+            .footer-grid{grid-template-columns:1fr;gap:2rem;padding:0 1.5rem 2rem;}
+            .title{font-size:1.8rem;}
+            .title-section{padding:90px 1rem 35px;}
+            .title-sub{font-size:0.85rem;}
+            .s1{position:relative !important;height:auto !important;padding:2.5rem 1rem 3rem;align-items:center;justify-content:center;overflow:visible !important;}
+            .s2{position:relative !important;height:auto !important;padding:0 0 3rem;align-items:flex-start;justify-content:flex-start;flex-direction:column;box-shadow:none;overflow:visible !important;}
+            .s2::before{border-radius:0;}
+            .s3{position:relative !important;height:auto !important;padding:0 0 3rem;align-items:flex-start;justify-content:flex-start;flex-direction:column;overflow:visible !important;border-radius:0 !important;box-shadow:none !important;}
+            .s3::before{border-radius:0;}
+            .section-header{position:sticky;top:0;z-index:5;width:100%;padding:1.2rem 1rem 1rem;margin-bottom:0;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+            .s2 .section-header{background:rgba(232,234,255,0.96);}
+            .s3 .section-header{background:rgba(221,224,255,0.96);}
+            .ach-grid{grid-template-columns:1fr !important;max-width:420px;width:100%;margin:0 auto;padding:1rem;gap:1.2rem;}
+            .ach-card{border-radius:16px;}
+            .ach-card-img-wrap{height:220px;}
+            .ach-card-body{padding:1.1rem 1rem;}
+            .ach-card-body h4{font-size:1rem;}
+            .ach-badge{font-size:0.73rem;padding:0.22rem 0.9rem;}
+            .hero-img-wrap{width:95vw;max-width:460px;border-radius:16px;margin:0 auto;}
+            .section-header h2{font-size:1.4rem;}
         }
-
         @media(max-width:480px){
-            .container,.nav-wrap{padding:0 .95rem;}
-            .search-box{flex-direction:column;align-items:stretch;gap:.65rem;}
-            .search-btn{width:100%;justify-content:center;}
-            .courses-section{padding:3rem 0;}
-            .course-img-area{height:170px;}
-            .course-body{padding:1.15rem;}
-            .course-body h3{font-size:1.02rem;}
-            .course-footer{flex-direction:column;align-items:stretch;gap:.75rem;}
-            .course-btn{width:100%;justify-content:center;}
-            .filter-tags{justify-content:flex-start;}
+            .ach-card-img-wrap{height:200px;}
+            .ach-card-body{padding:1rem;}
+            .ach-card-body h4{font-size:0.95rem;}
+            .logo img{height:36px;}
+            .logo-text{font-size:0.85rem;}
+            .logo-text span{font-size:0.55rem;}
+            .title{font-size:1.5rem;}
+            .section-header h2{font-size:1.25rem;}
         }
     </style>
-<base target="_blank">
-<base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <div class="nav-wrap">
-        <a href="index.html" class="logo" style="display:flex;align-items:center;gap:.75rem;text-decoration:none;">
-            <img src="logo.jpg" alt="APK INFOTECH" style="height:48px;width:auto;object-fit:contain;">
+        <a href="index.html" target="_self" class="logo">
+            <img src="logo.jpg" alt="APK INFOTECH">
             <div class="logo-text">APK INFOTECH<span>IT SOLUTIONS PVT LTD</span></div>
         </a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="course.html" class="active">Courses</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="achivement.html">Achievements</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html" target="_self">Home</a></li>
+            <li><a href="index.html#services" target="_self">Services</a></li>
+            <li><a href="course.html" target="_self">Courses</a></li>
+            <li><a href="about.html" target="_self">About</a></li>
+            <li><a href="achivement.html" target="_self" class="active">Achievements</a></li>
+            <li><a href="index.html#contact" target="_self">Contact</a></li>
         </ul>
         <div class="nav-right">
             <button class="mob-btn" onclick="toggleMenu()"><i data-lucide="menu" style="width:24px;height:24px;"></i></button>
@@ -188,210 +159,130 @@
     </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mob-overlay" id="mobOverlay" onclick="toggleMenu()"></div>
 <div class="mob-menu" id="mobMenu">
     <button class="mob-close" onclick="toggleMenu()"><i data-lucide="x" style="width:24px;height:24px;"></i></button>
     <ul class="mob-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="course.html" class="active">Courses</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="achivement.html">Achievements</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html" target="_self">Home</a></li>
+        <li><a href="index.html#services" target="_self">Services</a></li>
+        <li><a href="course.html" target="_self">Courses</a></li>
+        <li><a href="about.html" target="_self">About</a></li>
+        <li><a href="achivement.html" target="_self" class="active">Achievements</a></li>
+        <li><a href="index.html#contact" target="_self">Contact</a></li>
     </ul>
 </div>
 
-<!-- SEARCH SECTION -->
-<section class="search-section">
-    <div class="container">
-        <div class="search-wrap">
-            <div class="search-box">
-                <i data-lucide="search" style="width:20px;height:20px;"></i>
-                <input type="text" id="courseSearch" placeholder="Search courses by name or keyword..." onkeyup="filterCourses()">
-                <button class="search-btn" onclick="filterCourses()">Search</button>
-            </div>
-            <div class="filter-tags">
-                <span class="ftag active" onclick="filterByCategory('all',this)">All Courses</span>
-                <span class="ftag" onclick="filterByCategory('Development',this)">Development</span>
-                <span class="ftag" onclick="filterByCategory('AI/ML',this)">AI/ML</span>
-                <span class="ftag" onclick="filterByCategory('Hardware',this)">Hardware</span>
-                <span class="ftag" onclick="filterByCategory('Security',this)">Security</span>
-                <span class="ftag" onclick="filterByCategory('Career',this)">Career</span>
-            </div>
-        </div>
-    </div>
-</section>
+<div class="title-section">
+    <div class="title">Our <span>Achievements</span></div>
+    <div class="sec-divider"></div>
+    <div class="title-sub">Celebrating milestones and certificates</div>
+</div>
 
-<!-- ALL COURSES -->
-<section class="courses-section" id="courses">
-    <div class="container">
-        <div class="sec-head">
-            <h2>Our <span>Courses</span></h2>
-            <p>Industry-relevant programs designed to boost your career trajectory</p>
+<div class="scroll-wrapper">
+
+    <section class="ach-section s1">
+        <div class="hero-img-wrap">
+            <img src="achivement1.png" alt="Team Achievement">
+        </div>
+    </section>
+
+    <section class="ach-section s2">
+        <div class="section-header">
+            <h2>Certificate <span>Distribution</span></h2>
             <div class="sec-divider"></div>
         </div>
-        <div class="courses-grid" id="coursesGrid">
-            <!-- Course 1 -->
-            <div class="course-card" data-category="Development">
-                <div class="course-img-area">
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop" alt="Full Stack Web Development">
-                    <div class="course-img-overlay"></div>
-                    <span class="course-category">Development</span>
-                </div>
-                <div class="course-body">
-                    <h3>Full Stack Web Development</h3>
-                    <p>Master the MERN stack from scratch. Build production-ready apps with React, Node.js, MongoDB & Express with real-world projects.</p>
-<div class="course-footer">
-                        <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="course-btn">Register Now <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
-                    </div>
-                </div>
+        <div class="ach-grid">
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement2.png" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
             </div>
-
-            <!-- Course 2 -->
-            <div class="course-card" data-category="AI/ML">
-                <div class="course-img-area">
-                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop" alt="Agentic AI with Gen AI">
-                    <div class="course-img-overlay"></div>
-                    <span class="course-category">AI/ML</span>
-                </div>
-                <div class="course-body">
-                    <h3>Agentic AI with Gen AI</h3>
-                    <p>Build the next generation of autonomous AI agents using LangChain, OpenAI, and multi-agent frameworks with hands-on projects.</p>
-<div class="course-footer">
-                        <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="course-btn">Register Now <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
-                    </div>
-                </div>
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement3.png" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
             </div>
-
-            <!-- Course 3 -->
-            <div class="course-card" data-category="Hardware">
-                <div class="course-img-area">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop" alt="VLSI Design">
-                    <div class="course-img-overlay"></div>
-                    <span class="course-category">Hardware</span>
-                </div>
-                <div class="course-body">
-                    <h3>VLSI Design</h3>
-                    <p>Learn chip design, verification, and semiconductor fundamentals. Master RTL design, simulation, and physical design concepts.</p>
-<div class="course-footer">
-                        <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="course-btn">Register Now <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
-                    </div>
-                </div>
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement4.png" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
             </div>
-
-            <!-- Course 4 -->
-            <div class="course-card" data-category="Security">
-                <div class="course-img-area">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop" alt="Cyber Security">
-                    <div class="course-img-overlay"></div>
-                    <span class="course-category">Security</span>
-                </div>
-                <div class="course-body">
-                    <h3>Cyber Security</h3>
-                    <p>Protect systems and networks. Learn penetration testing, vulnerability assessment, ethical hacking and security hardening.</p>
-<div class="course-footer">
-                        <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="course-btn">Register Now <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 5 -->
-            <div class="course-card" data-category="Hardware">
-                <div class="course-img-area">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Robotics and PCB Design">
-                    <div class="course-img-overlay"></div>
-                    <span class="course-category">Hardware</span>
-                </div>
-                <div class="course-body">
-                    <h3>Robotics and PCB Design</h3>
-                    <p>Master embedded systems, automation, circuit design and PCB layout. Build real robots and design professional circuit boards.</p>
-<div class="course-footer">
-                        <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="course-btn">Register Now <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 6 -->
-            <div class="course-card" data-category="Career">
-                <div class="course-img-area">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" alt="Placement Readiness Program">
-                    <div class="course-img-overlay"></div>
-                    <span class="course-category">Career</span>
-                </div>
-                <div class="course-body">
-                    <h3>Placement Readiness Program</h3>
-                    <p>Complete campus preparation with mock interviews, resume building, aptitude training, and soft skills development.</p>
-<div class="course-footer">
-                        <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="course-btn">Register Now <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 7 -->
-            <div class="course-card" data-category="Career">
-                <div class="course-img-area">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Graduate Engineering Training">
-                    <div class="course-img-overlay"></div>
-                    <span class="course-category">Career</span>
-                </div>
-                <div class="course-body">
-                    <h3>Graduate Engineering Training (GET)</h3>
-                    <p>Bridge the gap between academics and industry. Practical engineering skills, tools training, and corporate readiness program.</p>
-<div class="course-footer">
-                        <a href="https://forms.gle/1itqR6Cn42RJJ5h8A" target="_blank" class="course-btn">Register Now <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
-                    </div>
-                </div>
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement5.png" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
+    <section class="ach-section s3">
+        <div class="section-header">
+            <h2>Certificate <span>Distribution</span></h2>
+            <div class="sec-divider"></div>
+        </div>
+        <div class="ach-grid">
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement6.png" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
+            </div>
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement7.png" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
+            </div>
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement8.jpeg" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
+            </div>
+            <div class="ach-card">
+                <div class="ach-card-img-wrap"><img src="achivement9.png" alt="Achievement" class="ach-card-img"></div>
+                <div class="ach-card-body"><h4>Achievements</h4><span class="ach-badge">APK INFOTECH</span></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
 <footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="f-brand">
-                <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
-                    <img src="logo.jpg" alt="APK INFOTECH" style="height:40px;width:auto;object-fit:contain;">
-                    <span style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;">APK INFOTECH</span>
-                </div>
-                <p>Empowering careers and businesses through innovative placement solutions, cutting-edge courses, and professional services.</p>
-                <div class="socials">
-                    <a href="#" class="social-a" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
-                    <a href="#" class="social-a" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
-                    <a href="https://wa.me/918939410255" target="_blank" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
-                </div>
+    <div class="footer-grid">
+        <div class="f-brand">
+            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+                <img src="logo.jpg" alt="APK INFOTECH" style="height:40px;width:auto;object-fit:contain;">
+                <span style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;">APK INFOTECH</span>
             </div>
-            <div class="f-col">
-                <h4>Quick Links</h4>
-                <ul class="f-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="course.html">Courses</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="achivement.html">Achievements</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
+            <p>Empowering careers and businesses through innovative placement solutions, cutting-edge courses, and professional services.</p>
+            <div class="socials">
+                <a href="#" target="_self" class="social-a" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                <a href="#" target="_self" class="social-a" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
+                <a href="https://wa.me/918939410255" target="_blank" rel="noopener" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
             </div>
-            <div class="f-col">
-                <h4>Our Courses</h4>
-                <ul class="f-links">
-                    <li><a href="#">Full Stack Web Development</a></li>
-                    <li><a href="#">Agentic AI with Gen AI</a></li>
-                    <li><a href="#">VLSI Design</a></li>
-                    <li><a href="#">Cyber Security</a></li>
-                    <li><a href="#">Robotics and PCB Design</a></li>
-                    <li><a href="#">Placement Readiness</a></li>
-                    <li><a href="#">GET Training</a></li>
-                </ul>
-            </div>
-            <div class="f-col f-contact">
-                <h4>Contact Info</h4>
-                <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p><p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98848 75551 (Optional)</p><p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 63812 72033 (Optional)</p>
-                <p><i data-lucide="mail" style="width:16px;height:16px;"></i> official@apkinfotech.in</p><p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="mail" style="width:14px;height:14px;"></i> hr@apkinfotech.in</p>
-                <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> No 65, 5th street, Ram Nagar, Mannivakkam, Chennai - 600 048</p>
-            </div>
+        </div>
+        <div class="f-col">
+            <h4>Quick Links</h4>
+            <ul class="f-links">
+                <li><a href="index.html" target="_self">Home</a></li>
+                <li><a href="index.html#services" target="_self">Services</a></li>
+                <li><a href="course.html" target="_self">Courses</a></li>
+                <li><a href="about.html" target="_self">About</a></li>
+                <li><a href="achivement.html" target="_self">Achievements</a></li>
+                <li><a href="index.html#contact" target="_self">Contact</a></li>
+            </ul>
+        </div>
+        <div class="f-col">
+            <h4>Our Courses</h4>
+            <ul class="f-links">
+                <li><a href="course.html" target="_self">Full Stack Web Development</a></li>
+                <li><a href="course.html" target="_self">Agentic AI with Gen AI</a></li>
+                <li><a href="course.html" target="_self">VLSI Design</a></li>
+                <li><a href="course.html" target="_self">Cyber Security</a></li>
+                <li><a href="course.html" target="_self">Robotics and PCB Design</a></li>
+                <li><a href="course.html" target="_self">Placement Readiness</a></li>
+                <li><a href="course.html" target="_self">GET Training</a></li>
+            </ul>
+        </div>
+        <div class="f-col f-contact">
+            <h4>Contact Info</h4>
+            <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 98848 75551</p>
+            <p style="margin-top:.15rem;"><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p>
+            <p style="margin-top:.15rem;"><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 63812 72033</p>
+            <p><i data-lucide="mail" style="width:16px;height:16px;"></i> official@apkinfotech.in</p>
+            <p style="margin-top:.15rem;"><i data-lucide="mail" style="width:16px;height:16px;"></i> hr@apkinfotech.in</p>
+            <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> No 65, 5th street, Ram Nagar, Mannivakkam, Chennai - 600 048</p>
         </div>
     </div>
     <div class="footer-bottom">
@@ -400,51 +291,10 @@
 </footer>
 
 <script>
-    // Initialize Lucide icons
     lucide.createIcons();
-
-    // Mobile menu
     function toggleMenu(){
         document.getElementById('mobMenu').classList.toggle('on');
         document.getElementById('mobOverlay').classList.toggle('on');
-    }
-
-    // Filter courses by category
-    function filterByCategory(category, element){
-        document.querySelectorAll('.ftag').forEach(tag=>tag.classList.remove('active'));
-        element.classList.add('active');
-
-        const cards=document.querySelectorAll('.course-card');
-        cards.forEach(card=>{
-            if(category==='all' || card.dataset.category===category){
-                card.style.display='flex';
-                setTimeout(()=>{card.style.opacity='1';card.style.transform='translateY(0)';},50);
-            } else {
-                card.style.opacity='0';
-                card.style.transform='translateY(20px)';
-                setTimeout(()=>{card.style.display='none';},300);
-            }
-        });
-    }
-
-    // Search courses
-    function filterCourses(){
-        const searchTerm=document.getElementById('courseSearch').value.toLowerCase();
-        const cards=document.querySelectorAll('.course-card');
-
-        cards.forEach(card=>{
-            const title=card.querySelector('h3').textContent.toLowerCase();
-            const desc=card.querySelector('p').textContent.toLowerCase();
-            const category=card.dataset.category.toLowerCase();
-
-            if(title.includes(searchTerm) || desc.includes(searchTerm) || category.includes(searchTerm)){
-                card.style.display='flex';
-                setTimeout(()=>{card.style.opacity='1';},50);
-            } else {
-                card.style.opacity='0';
-                setTimeout(()=>{card.style.display='none';},300);
-            }
-        });
     }
 </script>
 
