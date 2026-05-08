@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achievements | APK INFOTECH IT SOLUTIONS</title>
+    <title>About Us | APK INFOTECH IT SOLUTIONS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -13,400 +13,293 @@
             --navy: #0B0C2A;
             --gold: #FFB800;
             --gold-light: #FFD250;
-            --bg: #F0F2FF;
+            --bg:  #F0F2FF;
+            --bg2: #e8eaff;
             --text: #0B0C2A;
             --text-light: #6B6CA0;
             --border: rgba(11,12,42,0.09);
-            --card-shadow: 0 4px 24px rgba(11,12,42,0.08);
-            --card-shadow-hover: 0 16px 48px rgba(11,12,42,0.17);
-            --grad-gold: linear-gradient(135deg, #FFB800 0%, #FFE066 50%, #FFB800 100%);
-            --grad-gold2: linear-gradient(135deg, #E6A000 0%, #FFD250 100%);
+            --card-shadow: 0 4px 20px rgba(11,12,42,0.10);
+            --card-shadow-hover: 0 12px 36px rgba(11,12,42,0.16);
+            --grad-gold: linear-gradient(135deg,#E6A000 0%,#FFD250 100%);
         }
 
         *{margin:0;padding:0;box-sizing:border-box;}
         html{scroll-behavior:smooth;}
         body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
         h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;font-weight:700;}
-
         ::-webkit-scrollbar{width:6px;}
         ::-webkit-scrollbar-track{background:var(--bg);}
         ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
 
-        /* ── NAVBAR ── */
-        .navbar{position:fixed;top:0;left:0;width:100%;z-index:9999;padding:.6rem 0;background:linear-gradient(135deg, #0B0C2A 0%, #1F2270 100%);border-bottom:2px solid rgba(255,184,0,.25);}
-        .nav-wrap{max-width:1300px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;}
-        .logo{text-decoration:none;display:flex;align-items:center;gap:.6rem;}
-        .logo img{height:42px;width:auto;object-fit:contain;}
-        .logo-text{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff;line-height:1.15;}
-        .logo-text span{display:block;font-size:.65rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
-        .nav-links{display:flex;gap:2rem;list-style:none;}
-        .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);font-weight:500;font-size:.9rem;position:relative;transition:color .3s;}
+        /* ══ NAVBAR ══ */
+        .navbar{position:sticky;top:0;width:100%;z-index:9000;padding:.6rem 0;
+            background:linear-gradient(135deg,#0B0C2A 0%,#1F2270 100%);
+            border-bottom:2px solid rgba(255,184,0,.25);}
+        .nav-wrap{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+        .logo{text-decoration:none;display:flex;align-items:center;gap:.75rem;}
+        .logo-text{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;line-height:1.15;}
+        .logo-text span{display:block;font-size:.7rem;font-weight:500;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;}
+        .nav-links{display:flex;gap:2.25rem;list-style:none;}
+        .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem;position:relative;transition:color .3s;}
         .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);border-radius:2px;transition:width .3s;}
         .nav-links a:hover{color:var(--gold-light);}
-        .nav-links a:hover::after{width:100%;}
+        .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
         .nav-links a.active{color:var(--gold);}
-        .nav-links a.active::after{width:100%;}
         .mob-btn{display:none;background:none;border:none;cursor:pointer;color:#fff;}
-
-        .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:901;opacity:0;pointer-events:none;transition:opacity .3s;}
+        .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9001;opacity:0;pointer-events:none;transition:opacity .3s;}
         .mob-overlay.on{opacity:1;pointer-events:all;}
-        .mob-menu{position:fixed;top:0;right:-100%;width:78%;max-width:340px;height:100vh;background:#fff;z-index:902;padding:5rem 2rem 2rem;box-shadow:-10px 0 40px rgba(0,0,0,.15);transition:right .35s cubic-bezier(.4,0,.2,1);}
+        .mob-menu{position:fixed;top:0;right:-100%;width:78%;max-width:340px;height:100vh;background:#fff;z-index:9002;padding:5rem 2rem 2rem;box-shadow:-10px 0 40px rgba(0,0,0,.15);transition:right .35s cubic-bezier(.4,0,.2,1);}
         .mob-menu.on{right:0;}
         .mob-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;color:var(--text);}
         .mob-links{list-style:none;display:flex;flex-direction:column;gap:1.25rem;}
         .mob-links a{text-decoration:none;color:var(--text);font-size:1.1rem;font-weight:600;display:block;padding:.5rem 0;border-bottom:1px solid var(--border);}
         .mob-links a.active{color:var(--gold);}
 
-        /* ── TITLE SECTION ── */
-        .title-section {
-            background: linear-gradient(135deg, #1a1c5c 0%, #2E2F6A 50%, #1F2270 100%);
-            padding: 100px 1.5rem 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 100;
-        }
-        .title-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255,184,0,0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(255,184,0,0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        .title span {
-            background: var(--grad-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .sec-divider {
-            width: 60px;
-            height: 4px;
-            background: var(--grad-gold);
-            border-radius: 2px;
-            margin: 0.8rem auto 0;
-            position: relative;
-            z-index: 1;
-        }
-        .title-sub {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            margin-top: 0.8rem;
-            position: relative;
-            z-index: 1;
+        /* ══ SCROLL WRAPPER ══ */
+        .scroll-wrapper{position:relative;}
+
+        /* ══ STICKY SECTIONS — all stick and stack ══ */
+        .team-section{
+            position:sticky;
+            top:0;
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            overflow:hidden;
+            will-change:transform;
         }
 
-        /* ── SCROLL WRAPPER ── */
-        .scroll-wrapper { position: relative; }
+        .s1{z-index:10;background:var(--bg);}
+        .s2{z-index:20;background:var(--bg2);}
+        .s3{z-index:30;background:var(--bg);}
+        .s4{z-index:40;background:var(--bg2);}
+        .s5{z-index:50;background:var(--bg);}
+        .s6{z-index:60;background:var(--bg2);}
 
-        /* ══ DESKTOP: ALL 3 SECTIONS STICKY ══ */
-        .ach-section {
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 1rem;
-            overflow: hidden;
+        /* Gold top bar + shadow for all overlay sections */
+        .s2,.s3,.s4,.s5,.s6{
+            box-shadow:0 -20px 60px rgba(11,12,42,.25),0 -4px 20px rgba(11,12,42,.15);
+            border-radius:28px 28px 0 0;
         }
-        .s1 { z-index: 10; background: #F0F2FF; }
-        .s2 {
-            z-index: 20;
-            background: #e8eaff;
-            box-shadow: 0 -8px 40px rgba(11,12,42,0.13);
-        }
-        .s3 {
-            z-index: 30;
-            background: #dde0ff;
-            box-shadow: 0 -8px 40px rgba(11,12,42,0.18);
-        }
-        .s2::before, .s3::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
-            border-radius: inherit;
+        .s2::before,.s3::before,.s4::before,.s5::before,.s6::before{
+            content:'';
+            position:absolute;top:0;left:0;right:0;height:4px;
+            background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);
+            border-radius:28px 28px 0 0;
+            z-index:5;
         }
 
-        /* ── HERO IMAGE ── */
-        .hero-img-wrap {
-            width: min(90vw, 600px);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(11,12,42,0.22);
-            border: 3px solid rgba(255,184,0,.3);
+        /* Floating orb */
+        .team-section::after{
+            content:'';
+            position:absolute;width:300px;height:300px;border-radius:50%;
+            background:radial-gradient(circle,rgba(255,184,0,.06) 0%,transparent 70%);
+            pointer-events:none;animation:floatOrb 9s ease-in-out infinite;
         }
-        .hero-img-wrap img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
+        .s1::after,.s3::after,.s5::after{bottom:-80px;right:-80px;}
+        .s2::after,.s4::after,.s6::after{top:-80px;left:-80px;animation-direction:reverse;}
+        @keyframes floatOrb{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+
+        /* ══ SECTION CONTENT ══ */
+        .sec-inner{
+            width:100%;max-width:860px;
+            display:flex;flex-direction:column;align-items:center;
+            padding:0 2rem;position:relative;z-index:2;
         }
 
-        /* ── SECTION HEADER ── */
-        .section-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
+        /* ══ SECTION HEADER ══ */
+        .section-header{text-align:center;margin-bottom:1.4rem;width:100%;}
+        .section-header h2{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--navy);}
+        .section-header h2 span{background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .section-header p{font-size:.9rem;color:var(--text-light);margin-top:.3rem;}
+        .sec-divider{width:48px;height:4px;background:var(--grad-gold);border-radius:2px;margin:.5rem auto 0;}
+
+        /* ══ TEAM GRID ══ */
+        .team-grid{display:grid;gap:1.4rem;width:100%;justify-items:center;}
+        .cols-2{grid-template-columns:repeat(2,1fr);max-width:620px;}
+        .cols-1{grid-template-columns:1fr;max-width:300px;}
+
+        /* ══ TEAM CARD ══ */
+        .team-card{
+            background:#fff;border-radius:18px;overflow:hidden;
+            box-shadow:var(--card-shadow);border:1px solid var(--border);
+            transition:transform .3s ease,box-shadow .3s ease;
+            position:relative;width:100%;
+            display:flex;flex-direction:column;
         }
-        .section-header h2 {
-            font-size: clamp(1.6rem, 3vw, 2.4rem);
-            color: var(--navy);
-            margin-bottom: .4rem;
+        .team-card::before{
+            content:'';position:absolute;top:0;left:0;width:100%;height:3px;
+            background:var(--grad-gold);transform:scaleX(0);transform-origin:left;
+            transition:transform .3s ease;z-index:4;
         }
-        .section-header h2 span {
-            background: var(--grad-gold2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .team-card:hover{transform:translateY(-5px);box-shadow:var(--card-shadow-hover);}
+        .team-card:hover::before{transform:scaleX(1);}
+
+        /* Full image — entire person visible, no crop */
+        .team-card-img-wrap{width:100%;overflow:hidden;background:#f0f1ff;flex-shrink:0;}
+        .team-card-img{
+            width:100%;display:block;
+            object-fit:contain;
+            object-position:top center;
+            transition:transform .4s ease;
+            max-height:260px;
+        }
+        .team-card:hover .team-card-img{transform:scale(1.02);}
+
+        /* Card body */
+        .team-card-body{
+            padding:.85rem 1rem 1rem;text-align:center;
+            display:flex;flex-direction:column;align-items:center;gap:.25rem;
+        }
+        .team-name{
+            font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;
+            color:var(--navy);min-height:1.3em;letter-spacing:.01em;
+        }
+        .team-role{font-size:.78rem;color:var(--text-light);line-height:1.4;}
+        .team-badge{
+            display:inline-block;background:var(--grad-gold);color:#fff;
+            font-size:.62rem;font-weight:700;font-family:'Syne',sans-serif;
+            padding:.16rem .65rem;border-radius:20px;letter-spacing:.04em;margin-top:.15rem;
         }
 
-        /* ── ACHIEVEMENT GRID ── */
-        .ach-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 1rem;
+        /* ══ FOOTER ══ */
+        .footer{background:linear-gradient(160deg,#080920 0%,#0d1035 50%,#080920 100%);color:#fff;padding:3rem 0 0;position:relative;overflow:hidden;}
+        .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2.5rem;padding-bottom:2.5rem;}
+        .f-brand p{color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.75;margin-bottom:1.35rem;margin-top:.75rem;}
+        .f-col h4{font-size:.95rem;font-weight:700;margin-bottom:1.25rem;color:#fff;letter-spacing:.03em;position:relative;padding-bottom:.6rem;}
+        .f-col h4::after{content:'';position:absolute;bottom:0;left:0;width:24px;height:2px;background:var(--gold);border-radius:2px;}
+        .f-links{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+        .f-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.88rem;transition:all .3s;display:flex;align-items:center;gap:.4rem;}
+        .f-links a::before{content:'›';color:var(--gold);opacity:0;transition:opacity .2s,transform .2s;transform:translateX(-4px);}
+        .f-links a:hover{color:var(--gold-light);padding-left:4px;}
+        .f-links a:hover::before{opacity:1;transform:translateX(0);}
+        .f-contact p{color:rgba(255,255,255,.55);font-size:.88rem;margin-bottom:.75rem;display:flex;align-items:center;gap:.65rem;}
+        .f-contact p i{color:var(--gold);flex-shrink:0;}
+        .socials{display:flex;gap:.75rem;}
+        .social-a{width:40px;height:40px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);text-decoration:none;transition:all .3s;}
+        .social-a:hover{background:var(--gold);color:#0B0C2A;border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 18px rgba(255,184,0,.3);}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;text-align:center;color:rgba(255,255,255,.3);font-size:.82rem;background:rgba(0,0,0,.2);}
+        .container{max-width:1300px;margin:0 auto;padding:0 2rem;}
+
+        /* ══ LAPTOP 769–1024px ══ */
+        @media(min-width:769px) and (max-width:1024px){
+            .cols-2{max-width:540px;gap:1.2rem;}
+            .cols-1{max-width:270px;}
+            .team-card-img{max-height:230px;}
+            .sec-inner{padding:0 1.5rem;}
         }
 
-        .ach-card {
-            background: #ffffff;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--border);
-            transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s;
-            position: relative;
-        }
-        .ach-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: var(--grad-gold2);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform .35s;
-        }
-        .ach-card:hover { transform: translateY(-8px); box-shadow: var(--card-shadow-hover); }
-        .ach-card:hover::before { transform: scaleX(1); }
-
-        .ach-card-img-wrap {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #e8eaff 0%, #d0d4ff 100%);
-        }
-        .ach-card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform .4s ease;
-        }
-        .ach-card:hover .ach-card-img { transform: scale(1.05); }
-
-        .ach-card-body {
-            padding: 1.2rem 1rem;
-            text-align: center;
-        }
-        .ach-card-body h4 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--navy);
-        }
-        .ach-badge {
-            display: inline-block;
-            margin-top: 0.5rem;
-            background: var(--grad-gold2);
-            color: #fff;
-            font-size: 0.72rem;
-            font-weight: 700;
-            font-family: 'Syne', sans-serif;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            letter-spacing: 0.04em;
+        /* ══ DESKTOP 1025–1440px ══ */
+        @media(min-width:1025px) and (max-width:1440px){
+            .sec-inner{padding:0 2.5rem;}
+            .cols-2{max-width:660px;gap:1.4rem;}
+            .cols-1{max-width:310px;}
+            .team-card-img{max-height:255px;}
+            .team-name{font-size:1rem;}
+            .team-role{font-size:.8rem;}
+            .section-header h2{font-size:2rem;}
         }
 
-        /* ── FOOTER ── */
-        .footer {
-            background: linear-gradient(160deg, #080920 0%, #0d1035 50%, #080920 100%);
-            color: #fff;
-            padding: 3rem 0 0;
-            position: relative;
-            overflow: hidden;
-            z-index: 40;
-        }
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 2.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 2rem 2.5rem;
-        }
-        .f-brand p { color: rgba(255,255,255,.55); font-size: 0.9rem; line-height: 1.75; margin-bottom: 1.35rem; margin-top: 0.75rem; }
-        .f-col h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 1.25rem; color: #fff; letter-spacing: 0.03em; position: relative; padding-bottom: 0.6rem; }
-        .f-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 24px; height: 2px; background: var(--gold); border-radius: 2px; }
-        .f-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-        .f-links a { color: rgba(255,255,255,.55); text-decoration: none; font-size: 0.88rem; transition: all .3s; display: flex; align-items: center; gap: 0.4rem; }
-        .f-links a::before { content: '›'; color: var(--gold); opacity: 0; transition: opacity .2s, transform .2s; transform: translateX(-4px); }
-        .f-links a:hover { color: var(--gold-light); padding-left: 4px; }
-        .f-links a:hover::before { opacity: 1; transform: translateX(0); }
-        .f-contact p { color: rgba(255,255,255,.55); font-size: 0.88rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.65rem; }
-        .f-contact p i { color: var(--gold); flex-shrink: 0; }
-        .socials { display: flex; gap: 0.75rem; }
-        .social-a { width: 40px; height: 40px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.7); text-decoration: none; transition: all .3s; }
-        .social-a:hover { background: var(--gold); color: #0B0C2A; border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(255,184,0,.3); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding: 1.5rem 2rem; text-align: center; color: rgba(255,255,255,.3); font-size: 0.82rem; background: rgba(0,0,0,.2); }
-
-        /* ── LAPTOP ── */
-        @media(max-width: 1024px) {
-            .ach-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-            .ach-card-img-wrap { height: 180px; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+        /* ══ BIG SCREEN >1440px ══ */
+        @media(min-width:1441px){
+            .sec-inner{padding:0 3rem;}
+            .cols-2{max-width:720px;gap:1.8rem;}
+            .cols-1{max-width:340px;}
+            .team-card-img{max-height:290px;}
+            .team-name{font-size:1.05rem;}
+            .team-role{font-size:.82rem;}
+            .section-header h2{font-size:2.2rem;}
         }
 
         /* ══════════════════════════════════════════════
-           MOBILE (<=768px)
+           MOBILE ≤768px
 
-           LOGIC:
-           - s1: relative, height:auto  — hero image scrolls normally
-           - s2: relative, height:auto  — 4 cards stacked (1 per row), header at top
-           - s3: sticky, top:0, 100vh   — overlays s1+s2 as user scrolls past them
+           s1 (Directors — 2 cards): position:relative + height:auto
+             → cards scroll normally in the page flow
+           s2–s6: position:sticky + height:100vh
+             → each overlays the previous on scroll
+           Single column, full pic visible (object-fit:contain)
         ══════════════════════════════════════════════ */
-        @media(max-width: 768px) {
-            .nav-links { display: none; }
-            .mob-btn { display: block; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; padding: 0 1.5rem 2rem; }
-            .title { font-size: 1.8rem; }
-            .title-section { padding: 90px 1rem 35px; }
-            .title-sub { font-size: 0.85rem; }
+        @media(max-width:768px){
+            .nav-links{display:none;}
+            .mob-btn{display:block;}
+            .container,.nav-wrap{padding:0 1.1rem;}
+            .footer-grid{grid-template-columns:1fr;gap:2rem;}
 
-            /* ── S1: Normal flow — hero image ── */
-            .s1 {
-                position: relative !important;
-                height: auto !important;
-                padding: 2.5rem 1rem 3rem;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* ── S2: Normal flow — 4 cards stacked ── */
-            .s2 {
-                position: relative !important;
-                height: auto !important;
-                padding: 0 0 3rem;
-                align-items: flex-start;
-                justify-content: flex-start;
-                flex-direction: column;
-                box-shadow: none;
-            }
-            .s2::before {
-                border-radius: 0;
+            /* s1: normal flow — user scrolls through 2 director cards */
+            .s1{
+                position:relative !important;
+                height:auto !important;
+                min-height:unset !important;
+                padding:2.8rem 1rem 4rem;
+                align-items:center;
+                justify-content:flex-start;
             }
 
-            /* ── S3: Sticky overlay — covers s1+s2 on scroll ── */
-            .s3 {
-                position: sticky !important;
-                top: 0 !important;
-                height: 100vh !important;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                border-radius: 20px 20px 0 0;
-                padding: 0 0 2rem;
-                box-shadow: 0 -16px 60px rgba(11,12,42,.22), 0 -4px 20px rgba(11,12,42,.12);
+            /* s2–s6: sticky overlay — each slides over the previous */
+            .s2,.s3,.s4,.s5,.s6{
+                position:sticky !important;
+                top:0 !important;
+                height:100vh !important;
+                border-radius:20px 20px 0 0;
+                justify-content:center;
+                align-items:center;
             }
-            .s3::before {
-                border-radius: 20px 20px 0 0;
-                position: sticky;
-                top: 0;
-                z-index: 2;
+            .s2::before,.s3::before,.s4::before,.s5::before,.s6::before{
+                border-radius:20px 20px 0 0;
             }
 
-            /* ── Section header: sticky inside section, stays at top while cards scroll ── */
-            .section-header {
-                position: sticky;
-                top: 0;
-                z-index: 5;
-                width: 100%;
-                padding: 1.2rem 1rem 1rem;
-                margin-bottom: 0;
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-            }
-            .s2 .section-header {
-                background: rgba(232, 234, 255, 0.96);
-            }
-            .s3 .section-header {
-                background: rgba(221, 224, 255, 0.96);
+            /* Single column */
+            .cols-2,.cols-1{
+                grid-template-columns:1fr !important;
+                max-width:100% !important;
+                width:100% !important;
+                gap:.9rem;
             }
 
-            /* ── ONE CARD PER ROW ── */
-            .ach-grid {
-                grid-template-columns: 1fr !important;
-                max-width: 420px;
-                width: 100%;
-                margin: 0 auto;
-                padding: 1rem 1rem 1rem;
-                gap: 1.2rem;
+            .sec-inner{padding:0 1rem;max-width:100%;}
+            .team-card{border-radius:14px;}
+
+            /* Full pic visible — height relative to viewport width */
+            .team-card-img{
+                max-height:48vw;
+                object-fit:contain;
+                object-position:top center;
             }
 
-            .ach-card { border-radius: 16px; }
-            .ach-card-img-wrap { height: 220px; }
-            .ach-card-body { padding: 1.1rem 1rem; }
-            .ach-card-body h4 { font-size: 1rem; }
-            .ach-badge { font-size: 0.73rem; padding: 0.22rem 0.9rem; }
-
-            .hero-img-wrap {
-                width: 95vw;
-                max-width: 460px;
-                border-radius: 16px;
-                margin: 0 auto;
-            }
-
-            .section-header h2 { font-size: 1.4rem; }
+            .team-card-body{padding:.8rem .9rem .9rem;}
+            .team-name{font-size:.9rem;}
+            .team-role{font-size:.75rem;}
+            .team-badge{font-size:.6rem;padding:.14rem .6rem;}
+            .section-header{margin-bottom:1rem;}
+            .section-header h2{font-size:1.45rem;}
+            .section-header p{font-size:.82rem;}
+            .sec-divider{width:40px;}
+            .team-section::after{width:150px;height:150px;}
         }
 
-        /* ── SMALL PHONE ── */
-        @media(max-width: 480px) {
-            .ach-card-img-wrap { height: 200px; }
-            .ach-card-body { padding: 1rem; }
-            .ach-card-body h4 { font-size: 0.95rem; }
-            .logo img { height: 36px; }
-            .logo-text { font-size: 0.85rem; }
-            .logo-text span { font-size: 0.55rem; }
-            .title { font-size: 1.5rem; }
-            .section-header h2 { font-size: 1.25rem; }
-            .s3 { border-radius: 16px 16px 0 0; }
-            .s3::before { border-radius: 16px 16px 0 0; }
+        /* ══ SMALL PHONE ≤480px ══ */
+        @media(max-width:480px){
+            .s1{padding:2.5rem .85rem 3.5rem;}
+            .s2,.s3,.s4,.s5,.s6{border-radius:16px 16px 0 0;}
+            .s2::before,.s3::before,.s4::before,.s5::before,.s6::before{border-radius:16px 16px 0 0;}
+            .team-card-img{max-height:52vw;}
+            .section-header h2{font-size:1.28rem;}
+            .team-name{font-size:.85rem;}
+            .team-role{font-size:.72rem;}
+        }
+
+        /* ══ TINY ≤360px ══ */
+        @media(max-width:360px){
+            .team-card-img{max-height:56vw;}
+            .team-name{font-size:.8rem;}
+            .team-role{font-size:.68rem;}
         }
     </style>
-<base target="_blank">
+    <base target="_blank">
 </head>
 <body>
 
@@ -414,24 +307,25 @@
 <nav class="navbar" id="navbar">
     <div class="nav-wrap">
         <a href="index.html" class="logo">
-            <img src="logo.jpg" alt="APK INFOTECH">
+            <img src="logo.jpg" alt="APK INFOTECH" style="height:48px;width:auto;object-fit:contain;">
             <div class="logo-text">APK INFOTECH<span>IT SOLUTIONS PVT LTD</span></div>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#services">Services</a></li>
             <li><a href="course.html">Courses</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="achivement.html" class="active">Achievements</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="achivement.html">Achievements</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <div class="nav-right">
-            <button class="mob-btn" onclick="toggleMenu()"><i data-lucide="menu" style="width:24px;height:24px;"></i></button>
+            <button class="mob-btn" onclick="toggleMenu()">
+                <i data-lucide="menu" style="width:24px;height:24px;"></i>
+            </button>
         </div>
     </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mob-overlay" id="mobOverlay" onclick="toggleMenu()"></div>
 <div class="mob-menu" id="mobMenu">
     <button class="mob-close" onclick="toggleMenu()"><i data-lucide="x" style="width:24px;height:24px;"></i></button>
@@ -439,172 +333,222 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#services">Services</a></li>
         <li><a href="course.html">Courses</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="achivement.html" class="active">Achievements</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="achivement.html">Achievements</a></li>
         <li><a href="index.html#contact">Contact</a></li>
     </ul>
 </div>
 
-<!-- ══ TITLE SECTION ══ -->
-<div class="title-section">
-    <div class="title">Our <span>Achievements</span></div>
-    <div class="sec-divider"></div>
-    <div class="title-sub">Celebrating milestones and certificates</div>
-</div>
-
-<!-- ══ STICKY SCROLL SECTIONS ══ -->
+<!-- ══ STICKY OVERLAY SCROLL ══ -->
 <div class="scroll-wrapper">
 
-    <!-- SECTION 1 – Hero Image -->
-    <!-- Mobile: relative + height:auto → normal flow -->
-    <section class="ach-section s1">
-        <div class="hero-img-wrap">
-            <img src="achivement1.png" alt="Team Achievement">
-        </div>
-    </section>
-
-    <!-- SECTION 2 – 4 cards -->
-    <!-- Mobile: relative + height:auto → cards scroll naturally, header sticky inside -->
-    <section class="ach-section s2">
-        <div class="section-header">
-            <h2>Certificate <span>Distribution</span></h2>
-            <div class="sec-divider"></div>
-        </div>
-        <div class="ach-grid">
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement2.png" alt="Achievement" class="ach-card-img">
-                </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
-                </div>
+    <!-- SECTION 1 · DIRECTORS · 2 cards -->
+    <section class="team-section s1" id="sec1">
+        <div class="sec-inner">
+            <div class="section-header" id="hdr1">
+                <h2>Our <span>Directors</span></h2>
+                <p>The founding pillars of APK INFOTECH</p>
+                <div class="sec-divider"></div>
             </div>
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement3.png" alt="Achievement" class="ach-card-img">
+            <div class="team-grid cols-2">
+                <div class="team-card" id="card-dir1">
+                    <div class="team-card-img-wrap">
+                        <img src="director1.png" alt="Director" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Steering the company with vision and strategic leadership</div>
+                        <span class="team-badge">DIRECTOR</span>
+                    </div>
                 </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
-                </div>
-            </div>
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement4.png" alt="Achievement" class="ach-card-img">
-                </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
-                </div>
-            </div>
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement5.png" alt="Achievement" class="ach-card-img">
-                </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
+                <div class="team-card" id="card-dir2">
+                    <div class="team-card-img-wrap">
+                        <img src="director2.png" alt="Director" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Guiding growth and sustainable business excellence</div>
+                        <span class="team-badge">DIRECTOR</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3 – 4 cards -->
-    <!-- Mobile: sticky + top:0 + height:100vh → overlays s1+s2, scrollable inside -->
-    <section class="ach-section s3">
-        <div class="section-header">
-            <h2>Certificate <span>Distribution</span></h2>
-            <div class="sec-divider"></div>
-        </div>
-        <div class="ach-grid">
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement6.png" alt="Achievement" class="ach-card-img">
-                </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
-                </div>
+    <!-- SECTION 2 · CEO · 1 card -->
+    <section class="team-section s2" id="sec2">
+        <div class="sec-inner">
+            <div class="section-header" id="hdr2">
+                <h2>Our <span>Chief Executive</span></h2>
+                <p>Leading APK INFOTECH with purpose and passion</p>
+                <div class="sec-divider"></div>
             </div>
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement7.png" alt="Achievement" class="ach-card-img">
-                </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
-                </div>
-            </div>
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement8.jpeg" alt="Achievement" class="ach-card-img">
-                </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
-                </div>
-            </div>
-            <div class="ach-card">
-                <div class="ach-card-img-wrap">
-                    <img src="achivement9.png" alt="Achievement" class="ach-card-img">
-                </div>
-                <div class="ach-card-body">
-                    <h4>Achievements</h4>
-                    <span class="ach-badge">APK INFOTECH</span>
+            <div class="team-grid cols-1">
+                <div class="team-card" id="card-ceo">
+                    <div class="team-card-img-wrap">
+                        <img src="ceo.png" alt="CEO" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Driving the company's vision, culture, and long-term success</div>
+                        <span class="team-badge">CEO</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-</div><!-- end scroll-wrapper -->
+    <!-- SECTION 3 · COO · 1 card -->
+    <section class="team-section s3" id="sec3">
+        <div class="sec-inner">
+            <div class="section-header" id="hdr3">
+                <h2>Our <span>Operations Head</span></h2>
+                <p>Ensuring excellence in every process and delivery</p>
+                <div class="sec-divider"></div>
+            </div>
+            <div class="team-grid cols-1">
+                <div class="team-card" id="card-coo">
+                    <div class="team-card-img-wrap">
+                        <img src="COO.png" alt="COO" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Streamlining operations for peak performance and growth</div>
+                        <span class="team-badge">COO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 · CTO · 1 card -->
+    <section class="team-section s4" id="sec4">
+        <div class="sec-inner">
+            <div class="section-header" id="hdr4">
+                <h2>Our <span>Technology Head</span></h2>
+                <p>Engineering tomorrow's solutions today</p>
+                <div class="sec-divider"></div>
+            </div>
+            <div class="team-grid cols-1">
+                <div class="team-card" id="card-cto">
+                    <div class="team-card-img-wrap">
+                        <img src="CTO.png" alt="CTO" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Driving innovation and technical excellence across every product</div>
+                        <span class="team-badge">CTO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 · CFO · 1 card -->
+    <section class="team-section s5" id="sec5">
+        <div class="sec-inner">
+            <div class="section-header" id="hdr5">
+                <h2>Our <span>Finance Head</span></h2>
+                <p>Building financial strength and sustainable growth</p>
+                <div class="sec-divider"></div>
+            </div>
+            <div class="team-grid cols-1">
+                <div class="team-card" id="card-cfo">
+                    <div class="team-card-img-wrap">
+                        <img src="CFO.png" alt="CFO" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Managing financial strategy and ensuring fiscal resilience</div>
+                        <span class="team-badge">CFO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6 · CMO x2 · 2 cards -->
+    <section class="team-section s6" id="sec6">
+        <div class="sec-inner">
+            <div class="section-header" id="hdr6">
+                <h2>Our <span>Marketing Team</span></h2>
+                <p>Building our brand presence and community</p>
+                <div class="sec-divider"></div>
+            </div>
+            <div class="team-grid cols-2">
+                <div class="team-card" id="card-cmo1">
+                    <div class="team-card-img-wrap">
+                        <img src="CMO.png" alt="CMO" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Building brand presence and crafting growth strategies that connect</div>
+                        <span class="team-badge">CMO</span>
+                    </div>
+                </div>
+                <div class="team-card" id="card-cmo2">
+                    <div class="team-card-img-wrap">
+                        <img src="CMO2.png" alt="CMO" class="team-card-img">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">&nbsp;</div>
+                        <div class="team-role">Driving digital campaigns and audience engagement at scale</div>
+                        <span class="team-badge">CMO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div><!-- /.scroll-wrapper -->
 
 <!-- ══ FOOTER ══ -->
 <footer class="footer">
-    <div class="footer-grid">
-        <div class="f-brand">
-            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
-                <img src="logo.jpg" alt="APK INFOTECH" style="height:40px;width:auto;object-fit:contain;">
-                <span style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;">APK INFOTECH</span>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="f-brand">
+                <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+                    <img src="logo.jpg" alt="APK INFOTECH" style="height:40px;width:auto;object-fit:contain;">
+                    <span style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;">APK INFOTECH</span>
+                </div>
+                <p>Empowering careers and businesses through innovative placement solutions, cutting-edge courses, and professional services.</p>
+                <div class="socials">
+                    <a href="#" class="social-a" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                    <a href="#" class="social-a" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
+                    <a href="https://wa.me/918939410255" target="_blank" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                </div>
             </div>
-            <p>Empowering careers and businesses through innovative placement solutions, cutting-edge courses, and professional services.</p>
-            <div class="socials">
-                <a href="#" class="social-a" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
-                <a href="#" class="social-a" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
-                <a href="https://wa.me/918939410255" target="_blank" class="social-a" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+            <div class="f-col">
+                <h4>Quick Links</h4>
+                <ul class="f-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="course.html">Courses</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
             </div>
-        </div>
-        <div class="f-col">
-            <h4>Quick Links</h4>
-            <ul class="f-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="course.html">Courses</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="achivement.html">Achievements</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-        <div class="f-col">
-            <h4>Our Courses</h4>
-            <ul class="f-links">
-                <li><a href="course.html">Full Stack Web Development</a></li>
-                <li><a href="course.html">Agentic AI with Gen AI</a></li>
-                <li><a href="course.html">VLSI Design</a></li>
-                <li><a href="course.html">Cyber Security</a></li>
-                <li><a href="course.html">Robotics and PCB Design</a></li>
-                <li><a href="course.html">Placement Readiness</a></li>
-                <li><a href="course.html">GET Training</a></li>
-            </ul>
-        </div>
-        <div class="f-col f-contact">
-            <h4>Contact Info</h4>
-            <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p>
-            <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98848 75551</p>
-            <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 63812 72033</p>
-            <p><i data-lucide="mail" style="width:16px;height:16px;"></i> official@apkinfotech.in</p>
-            <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="mail" style="width:14px;height:14px;"></i> hr@apkinfotech.in</p>
-            <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> No 65, 5th street, Ram Nagar, Mannivakkam, Chennai - 600 048</p>
+            <div class="f-col">
+                <h4>Our Courses</h4>
+                <ul class="f-links">
+                    <li><a href="#">Full Stack Web Development</a></li>
+                    <li><a href="#">Agentic AI with Gen AI</a></li>
+                    <li><a href="#">VLSI Design</a></li>
+                    <li><a href="#">Cyber Security</a></li>
+                    <li><a href="#">Robotics and PCB Design</a></li>
+                    <li><a href="#">Placement Readiness</a></li>
+                    <li><a href="#">GET Training</a></li>
+                </ul>
+            </div>
+            <div class="f-col f-contact">
+                <h4>Contact Info</h4>
+                <p><i data-lucide="phone" style="width:16px;height:16px;"></i> +91 89394 10255</p>
+                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98848 75551 (Optional)</p>
+                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 63812 72033 (Optional)</p>
+                <p><i data-lucide="mail" style="width:16px;height:16px;"></i> official@apkinfotech.in</p>
+                <p style="font-size:.78rem;opacity:.65;margin-top:.15rem;"><i data-lucide="mail" style="width:14px;height:14px;"></i> hr@apkinfotech.in</p>
+                <p><i data-lucide="map-pin" style="width:16px;height:16px;"></i> No 65, 5th street, Ram Nagar, Mannivakkam, Chennai - 600 048</p>
+            </div>
         </div>
     </div>
     <div class="footer-bottom">
@@ -612,11 +556,55 @@
     </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script>
     lucide.createIcons();
+    gsap.registerPlugin(ScrollTrigger);
+
     function toggleMenu(){
         document.getElementById('mobMenu').classList.toggle('on');
         document.getElementById('mobOverlay').classList.toggle('on');
+    }
+
+    const isMobile = window.innerWidth <= 768;
+
+    /* ── Section 1: page-load animations ── */
+    gsap.from('#hdr1',      { y:-30,opacity:0,duration:.8,ease:'power2.out',delay:.1 });
+    gsap.from('#card-dir1', { x:-80,opacity:0,duration:.9,ease:'power3.out',delay:.25 });
+    gsap.from('#card-dir2', { x:80, opacity:0,duration:.9,ease:'power3.out',delay:.4 });
+    gsap.from('#sec1 .team-badge',{ y:10,opacity:0,duration:.4,ease:'power2.out',stagger:.1,delay:.75 });
+
+    /* ── Sections 2–6: scroll-triggered animations ── */
+    [
+        { sec:'sec2',hdr:'hdr2',cards:['card-ceo'],                twoCol:false },
+        { sec:'sec3',hdr:'hdr3',cards:['card-coo'],                twoCol:false },
+        { sec:'sec4',hdr:'hdr4',cards:['card-cto'],                twoCol:false },
+        { sec:'sec5',hdr:'hdr5',cards:['card-cfo'],                twoCol:false },
+        { sec:'sec6',hdr:'hdr6',cards:['card-cmo1','card-cmo2'],   twoCol:true  },
+    ].forEach(({sec,hdr,cards,twoCol})=>{
+        const t='#'+sec;
+        gsap.from('#'+hdr,{y:-30,opacity:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:t,start:'top 85%'}});
+        if(twoCol){
+            gsap.from('#'+cards[0],{x:-80,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'}});
+            gsap.from('#'+cards[1],{x:80, opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'},delay:.15});
+        } else {
+            gsap.from('#'+cards[0],{y:60,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 80%'}});
+        }
+        gsap.from(t+' .team-badge',{y:10,opacity:0,duration:.4,ease:'power2.out',stagger:.1,scrollTrigger:{trigger:t,start:'top 70%'},delay:.3});
+    });
+
+    /* ── Desktop: scrub scale as next section slides over ── */
+    if(!isMobile){
+        [
+            {cards:['#card-dir1','#card-dir2'], trigger:'#sec2'},
+            {cards:['#card-ceo'],               trigger:'#sec3'},
+            {cards:['#card-coo'],               trigger:'#sec4'},
+            {cards:['#card-cto'],               trigger:'#sec5'},
+            {cards:['#card-cfo'],               trigger:'#sec6'},
+        ].forEach(({cards,trigger})=>{
+            gsap.to(cards,{scale:.92,scrollTrigger:{trigger,start:'top 60%',end:'top 20%',scrub:1.5}});
+        });
     }
 </script>
 
